@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  wedding-website:
+    build: .
+    container_name: wedding-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+networks:
+  wedding-network:
+    driver: bridge
