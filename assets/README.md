@@ -31,3 +31,11 @@ Para melhor qualidade:
 
 - Logo: use PNG com fundo transparente
 - Fotos: use JPG com boa qualidade (recomenda-se 800x1000px ou maior)
+
+## Foto Principal dos Noivos
+
+Para a seção de foto principal após a contagem regressiva, adicione:
+
+**noivos_preto_branco.png**
+
+Esta foto será exibida em tamanho grande em uma seção dedicada após o timer de contagem regressiva.

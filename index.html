@@ -58,33 +58,52 @@
 
           <!-- Photo Gallery -->
           <div class="photo-gallery">
-            <div class="photo-frame">
-              <img
-                src="assets/foto1.jpeg"
-                alt="Suzana & Eric"
-                class="gallery-photo"
-              />
-              <div class="photo-overlay"></div>
-            </div>
-            <div class="photo-frame">
-              <img
-                src="assets/foto2.jpeg"
-                alt="Suzana & Eric"
-                class="gallery-photo"
-              />
-              <div class="photo-overlay"></div>
-            </div>
-            <div class="photo-frame">
-              <img
-                src="assets/foto3.jpeg"
-                alt="Suzana & Eric"
-                class="gallery-photo"
-              />
-              <div class="photo-overlay"></div>
+            <div class="photo-carousel-container">
+              <div class="photo-carousel">
+                <div class="photo-frame active">
+                  <img
+                    src="assets/foto1.jpeg"
+                    alt="Suzana & Eric"
+                    class="gallery-photo"
+                  />
+                  <div class="photo-overlay"></div>
+                </div>
+                <div class="photo-frame">
+                  <img
+                    src="assets/foto2.jpeg"
+                    alt="Suzana & Eric"
+                    class="gallery-photo"
+                  />
+                  <div class="photo-overlay"></div>
+                </div>
+                <div class="photo-frame">
+                  <img
+                    src="assets/foto3.jpeg"
+                    alt="Suzana & Eric"
+                    class="gallery-photo"
+                  />
+                  <div class="photo-overlay"></div>
+                </div>
+              </div>
             </div>
 
             <!-- Gallery Date -->
             <div class="gallery-date">10.04.2027</div>
+
+            <!-- Carousel Controls (Mobile only) -->
+            <div class="carousel-controls">
+              <button class="carousel-btn prev-btn" aria-label="Foto anterior">
+                <span>‹</span>
+              </button>
+              <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+              </div>
+              <button class="carousel-btn next-btn" aria-label="Próxima foto">
+                <span>›</span>
+              </button>
+            </div>
           </div>
 
           <!-- Decorative foliage - bottom right -->
@@ -147,6 +166,9 @@
         </div>
       </div>
     </section>
+
+    <!-- Photo Section -->
+    <section class="photo-section" id="photo"></section>
 
     <!-- About Section -->
     <section class="about-section" id="about">
