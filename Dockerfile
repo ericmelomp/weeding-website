@@ -1,5 +1,8 @@
 FROM nginx:alpine
 
+# Instala wget para health check
+RUN apk add --no-cache wget
+
 # Remove arquivo de configuração padrão do nginx
 RUN rm /etc/nginx/conf.d/default.conf
 
