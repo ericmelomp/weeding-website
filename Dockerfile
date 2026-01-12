@@ -16,8 +16,8 @@ COPY presentes.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 
-# Cria diretório para assets (o conteúdo será montado via volume no docker-compose)
-RUN mkdir -p /usr/share/nginx/html/assets
+# Copia assets (imagens) para o container
+COPY assets/ /usr/share/nginx/html/assets/
 
 # Expõe porta 80
 EXPOSE 80
