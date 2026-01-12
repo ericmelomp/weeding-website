@@ -615,7 +615,7 @@ async function sendEmail(data, emailHTML) {
     }
     
     const templateParams = {
-        to_email: 'ericmelomp@gmail.com',
+        to_email: 'ericmelomp@gmail.com,suzana.mlpaiva@gmail.com',
         subject: 'Casamento - Confirmação de Presença',
         message_html: emailHTML,
         name: nomeCompleto,  // Template pode esperar 'name' em vez de 'nome'
