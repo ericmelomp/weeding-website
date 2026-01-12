@@ -1,15 +1,23 @@
-version: '3.8'
-
 services:
   wedding-website:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: wedding-website
     ports:
-      - "8080:80"
+      - "80:80"
+    volumes:
+      # Descomentar para desenvolvimento (hot-reload)
+      # - ./index.html:/usr/share/nginx/html/index.html
+      # - ./rsvp.html:/usr/share/nginx/html/rsvp.html
+      # - ./presentes.html:/usr/share/nginx/html/presentes.html
+      # - ./styles.css:/usr/share/nginx/html/styles.css
+      # - ./script.js:/usr/share/nginx/html/script.js
+      - ./assets:/usr/share/nginx/html/assets
     restart: unless-stopped
-    networks:
-      - wedding-network
-
-networks:
-  wedding-network:
-    driver: bridge
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

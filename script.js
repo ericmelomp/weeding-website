@@ -1,498 +1,689 @@
-// Data do casamento: 10 de Abril de 2027
-const weddingDate = new Date('2027-04-10T00:00:00');
-
-// Elementos do DOM
-const yearsElement = document.getElementById('years');
-const monthsElement = document.getElementById('months');
-const daysElement = document.getElementById('days');
-const hoursElement = document.getElementById('hours');
-const minutesElement = document.getElementById('minutes');
-const secondsElement = document.getElementById('seconds');
-
-// Função para calcular diferença de tempo de forma precisa
-function calculateTimeDifference(targetDate) {
-    const now = new Date();
+// ========================================
+// COUNTDOWN
+// ========================================
+function initCountdown() {
+    const targetDate = new Date('2027-04-10T16:00:00');
+    const yearsEl = document.getElementById('years');
+    const monthsEl = document.getElementById('months');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
     
-    // Se a data já passou, retornar zeros
-    if (now >= targetDate) {
-        return {
-            years: 0,
-            months: 0,
-            days: 0,
-            hours: 0,
-            minutes: 0,
-            seconds: 0
-        };
+    if (!yearsEl || !monthsEl || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+    
+    function updateCountdown() {
+        const now = new Date();
+        const distance = targetDate - now;
+        
+        if (distance < 0) {
+            yearsEl.textContent = '0';
+            monthsEl.textContent = '0';
+            daysEl.textContent = '0';
+            hoursEl.textContent = '0';
+            minutesEl.textContent = '0';
+            secondsEl.textContent = '0';
+            return;
+        }
+        
+        // Calcula anos
+        let years = targetDate.getFullYear() - now.getFullYear();
+        let months = targetDate.getMonth() - now.getMonth();
+        let days = targetDate.getDate() - now.getDate();
+        let hours = targetDate.getHours() - now.getHours();
+        let mins = targetDate.getMinutes() - now.getMinutes();
+        let secs = targetDate.getSeconds() - now.getSeconds();
+        
+        // Ajusta segundos
+        if (secs < 0) {
+            secs += 60;
+            mins--;
+        }
+        
+        // Ajusta minutos
+        if (mins < 0) {
+            mins += 60;
+            hours--;
+        }
+        
+        // Ajusta horas
+        if (hours < 0) {
+            hours += 24;
+            days--;
+        }
+        
+        // Ajusta dias
+        if (days < 0) {
+            const lastMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            days += lastMonth.getDate();
+            months--;
+        }
+        
+        // Ajusta meses
+        if (months < 0) {
+            months += 12;
+            years--;
+        }
+        
+        // Se ainda não chegou no ano
+        if (years < 0) {
+            years = 0;
+            months = 0;
+            days = 0;
+            hours = 0;
+            mins = 0;
+            secs = 0;
+        }
+        
+        yearsEl.textContent = years;
+        monthsEl.textContent = months;
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = mins;
+        secondsEl.textContent = secs;
     }
-
-    // Calcular anos
-    let years = targetDate.getFullYear() - now.getFullYear();
     
-    // Criar uma data ajustada para calcular meses e dias
-    let tempDate = new Date(now);
-    tempDate.setFullYear(tempDate.getFullYear() + years);
-    
-    // Se após adicionar os anos ainda passou da data alvo, reduzir um ano
-    if (tempDate > targetDate) {
-        years--;
-        tempDate = new Date(now);
-        tempDate.setFullYear(tempDate.getFullYear() + years);
-    }
-    
-    // Calcular meses
-    let months = targetDate.getMonth() - tempDate.getMonth();
-    tempDate.setMonth(tempDate.getMonth() + months);
-    
-    // Se após adicionar os meses ainda passou da data alvo, reduzir um mês
-    if (tempDate > targetDate) {
-        months--;
-        tempDate.setMonth(tempDate.getMonth() - 1);
-    }
-    
-    // Calcular a diferença total em milissegundos
-    const totalDifference = targetDate - tempDate;
-    
-    // Calcular dias completos
-    let days = Math.floor(totalDifference / (1000 * 60 * 60 * 24));
-    
-    // Calcular horas restantes (garantindo que seja < 24)
-    const remainingAfterDays = totalDifference - (days * 1000 * 60 * 60 * 24);
-    let hours = Math.floor(remainingAfterDays / (1000 * 60 * 60));
-    
-    // Se horas >= 24, converter em dias (não deveria acontecer, mas garantimos)
-    if (hours >= 24) {
-        const extraDays = Math.floor(hours / 24);
-        days += extraDays;
-        hours = hours % 24;
-    }
-    
-    // Garantir que horas está entre 0 e 23
-    hours = Math.max(0, Math.min(23, hours));
-    
-    // Calcular minutos e segundos restantes
-    const remainingAfterHours = remainingAfterDays - (hours * 1000 * 60 * 60);
-    const minutes = Math.floor(remainingAfterHours / (1000 * 60));
-    const seconds = Math.floor((remainingAfterHours % (1000 * 60)) / 1000);
-
-    return {
-        years: Math.max(0, years),
-        months: Math.max(0, months),
-        days: Math.max(0, days),
-        hours: hours,
-        minutes: Math.max(0, minutes),
-        seconds: Math.max(0, seconds)
-    };
+    updateCountdown();
+    setInterval(updateCountdown, 1000); // Atualiza a cada segundo
 }
 
-// Função para atualizar o contador
-function updateCountdown() {
-    const timeLeft = calculateTimeDifference(weddingDate);
-
-    // Função para adicionar animação de flash quando o valor muda
-    function updateWithFlash(element, newValue, oldValue, isLarge = false) {
-        const formattedValue = isLarge ? newValue.toString() : newValue.toString().padStart(2, '0');
-        const oldFormattedValue = oldValue ? oldValue.toString() : '0';
-        
-        if (formattedValue !== oldFormattedValue) {
-            element.classList.add('flash');
-            element.textContent = formattedValue;
-            setTimeout(() => {
-                element.classList.remove('flash');
-            }, 500);
-        } else {
-            element.textContent = formattedValue;
-        }
-    }
-
-    // Atualizar elementos com animação
-    const oldYears = yearsElement.textContent;
-    const oldMonths = monthsElement.textContent;
-    const oldDays = daysElement.textContent;
-    const oldHours = hoursElement.textContent;
-    const oldMinutes = minutesElement.textContent;
-    const oldSeconds = secondsElement.textContent;
-
-    updateWithFlash(yearsElement, timeLeft.years, oldYears, true);
-    updateWithFlash(monthsElement, timeLeft.months, oldMonths);
-    updateWithFlash(daysElement, timeLeft.days, oldDays, true);
-    updateWithFlash(hoursElement, timeLeft.hours, oldHours);
-    updateWithFlash(minutesElement, timeLeft.minutes, oldMinutes);
-    updateWithFlash(secondsElement, timeLeft.seconds, oldSeconds);
-}
-
-// Atualizar imediatamente
-updateCountdown();
-
-// Atualizar a cada segundo
-setInterval(updateCountdown, 1000);
-
-// Animação de entrada ao scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Função de animação de escrita (Typewriter Effect)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            const char = text.charAt(i);
-            // Se for o caractere &, adiciona com classe gold
-            if (char === '&') {
-                element.innerHTML += '<span class="gold">&</span>';
-            } else if (char === ' ') {
-                // Manter espaços
-                element.innerHTML += ' ';
-            } else {
-                element.innerHTML += char;
-            }
-            i++;
-            setTimeout(type, speed);
-        } else {
-            // Quando terminar, fazer o cursor desaparecer suavemente
-            setTimeout(() => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.opacity = '0';
-                    cursor.style.transition = 'opacity 0.5s ease-out';
-                    setTimeout(() => {
-                        cursor.style.display = 'none';
-                    }, 500);
-                }
-            }, 500);
-        }
-    }
-    
-    type();
-}
-
-// Observar elementos das seções
-document.addEventListener('DOMContentLoaded', () => {
-    // Garantir que o logo seja exibido corretamente
-    const logoBrasao = document.querySelector('.logo-brasao');
-    if (logoBrasao) {
-        logoBrasao.style.display = 'block';
-        logoBrasao.style.visibility = 'visible';
-        // Verificar se a imagem carregou
-        logoBrasao.onerror = function() {
-            console.error('Erro ao carregar o logo: assets/logobrasao.png');
-            this.style.display = 'none';
-        };
-        logoBrasao.onload = function() {
-            console.log('Logo carregado com sucesso!');
-            this.style.display = 'block';
-        };
-    }
-    
-    // Iniciar animação de escrita
-    const typewriterText = document.querySelector('.typewriter-text');
-    if (typewriterText) {
-        // Aguardar um pouco para começar a animação (após o fade-in do logo)
-        setTimeout(() => {
-            typeWriter(typewriterText, 'Suzana & Eric', 150);
-        }, 800);
-    }
-
-    const sections = document.querySelectorAll('.gallery-section, .countdown-section, .photo-section, .about-section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        observer.observe(section);
-    });
-    
-    // Tratamento de erro para fotos da galeria
-    const galleryPhotos = document.querySelectorAll('.gallery-photo');
-    galleryPhotos.forEach(photo => {
-        photo.onerror = function() {
-            // Se a foto não carregar, ocultar o frame
-            this.parentElement.style.display = 'none';
-        };
-    });
-    
-    // Verificar se a imagem de background foi carregada
-    const photoSection = document.querySelector('.photo-section');
-    if (photoSection) {
-        const img = new Image();
-        img.onload = function() {
-            console.log('Imagem de background carregada com sucesso!');
-        };
-        img.onerror = function() {
-            console.error('Erro ao carregar a imagem de background: assets/noivos_preto_branco.png');
-        };
-        img.src = 'assets/noivos_preto_branco.png';
-    }
-    
-    // Inicializar carousel para mobile
-    initPhotoCarousel();
-
-    // Smooth scroll para o scroll indicator
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            document.getElementById('timer').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        });
-        
-        // Tornar o scroll indicator clicável
-        scrollIndicator.style.cursor = 'pointer';
-    }
-});
-
-// Efeito parallax suave no hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
-// Prevenir scroll horizontal
-window.addEventListener('resize', () => {
-    document.body.style.overflowX = 'hidden';
-});
-
-// Função para inicializar o carousel de fotos (mobile)
-function initPhotoCarousel() {
-    const photoFrames = document.querySelectorAll('.photo-carousel .photo-frame');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const carousel = document.querySelector('.photo-carousel');
-    
-    if (photoFrames.length === 0) return;
-    
-    // Só inicializar carousel em mobile (width <= 768px)
-    function checkMobile() {
-        return window.innerWidth <= 768;
-    }
-    
-    // Estado do carousel
-    let currentSlide = 0;
-    const totalSlides = photoFrames.length;
-    let isTransitioning = false;
-    
-    // Se não for mobile, mostrar todas as fotos e sair
-    if (!checkMobile()) {
-        photoFrames.forEach(frame => {
-            frame.classList.add('active');
-            frame.style.opacity = '1';
-            frame.style.position = 'relative';
-            frame.style.transform = '';
-        });
-        return;
-    }
-    
-    // Função para atualizar o carousel
-    function updateCarousel(direction = 0) {
-        // Remover active de todas
-        photoFrames.forEach((frame, index) => {
-            frame.classList.remove('active');
-            if (index !== currentSlide) {
-                frame.style.opacity = '0';
-                frame.style.transform = 'translateX(-50%) translateX(0)';
-                frame.style.pointerEvents = 'none';
-                frame.style.zIndex = '1';
-            }
-        });
-        
-        // Ativar foto atual
-        const activeFrame = photoFrames[currentSlide];
-        activeFrame.classList.add('active');
-        activeFrame.style.pointerEvents = 'auto';
-        activeFrame.style.zIndex = '2';
-        
-        // Atualizar dots
-        dots.forEach((dot, index) => {
-            dot.classList.remove('active');
-            if (index === currentSlide) {
-                dot.classList.add('active');
-            }
-        });
-        
-        // Animação
-        if (direction !== 0) {
-            activeFrame.style.transition = 'none';
-            activeFrame.style.opacity = '0';
-            activeFrame.style.transform = direction > 0 
-                ? 'translateX(-50%) translateX(60px)' 
-                : 'translateX(-50%) translateX(-60px)';
+// ========================================
+// SMOOTH SCROLL
+// ========================================
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             
-            // Forçar renderização
-            void activeFrame.offsetHeight;
-            
-            // Animar entrada
-            requestAnimationFrame(() => {
-                activeFrame.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                activeFrame.style.opacity = '1';
-                activeFrame.style.transform = 'translateX(-50%) translateX(0)';
-            });
-        } else {
-            // Primeira carga
-            activeFrame.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            activeFrame.style.opacity = '1';
-            activeFrame.style.transform = 'translateX(-50%) translateX(0)';
-        }
-    }
-    
-    // Navegação - próxima
-    function goNext() {
-        if (isTransitioning || !checkMobile()) return;
-        
-        isTransitioning = true;
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel(1);
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-    }
-    
-    // Navegação - anterior
-    function goPrev() {
-        if (isTransitioning || !checkMobile()) return;
-        
-        isTransitioning = true;
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel(-1);
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-    }
-    
-    // Event listeners - usar método mais confiável
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            goNext();
-        }, { once: false, passive: false });
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            goPrev();
-        }, { once: false, passive: false });
-    }
-    
-    // Dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (currentSlide !== index && !isTransitioning && checkMobile()) {
-                isTransitioning = true;
-                const direction = index > currentSlide ? 1 : -1;
-                currentSlide = index;
-                updateCarousel(direction);
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 500);
-            }
-        });
-    });
-    
-    // Swipe
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    if (carousel) {
-        carousel.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        carousel.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            const threshold = 50;
-            
-            if (Math.abs(diff) > threshold && !isTransitioning && checkMobile()) {
-                if (diff > 0) {
-                    goNext();
-                } else {
-                    goPrev();
-                }
-            }
-        }, { passive: true });
-    }
-    
-    // Auto-play para mobile (trocar a cada 3 segundos)
-    let autoPlayInterval = null;
-    
-    function startAutoPlay() {
-        if (!checkMobile()) return;
-        if (autoPlayInterval) return; // Já está rodando
-        
-        autoPlayInterval = setInterval(function() {
-            if (!isTransitioning && checkMobile()) {
-                goNext();
-            }
-        }, 3000); // 3 segundos
-    }
-    
-    function stopAutoPlay() {
-        if (autoPlayInterval) {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = null;
-        }
-    }
-    
-    // Pausar auto-play quando o usuário interagir
-    if (carousel) {
-        carousel.addEventListener('touchstart', function() {
-            stopAutoPlay();
-            // Reiniciar após 5 segundos de inatividade
-            setTimeout(function() {
-                if (checkMobile()) {
-                    startAutoPlay();
-                }
-            }, 5000);
-        }, { passive: true });
-    }
-    
-    // Inicializar
-    updateCarousel(0);
-    
-    // Iniciar auto-play em mobile
-    if (checkMobile()) {
-        startAutoPlay();
-    }
-    
-    // Resize handler
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            if (checkMobile()) {
-                currentSlide = 0;
-                updateCarousel(0);
-                startAutoPlay(); // Reiniciar auto-play em mobile
-            } else {
-                stopAutoPlay(); // Parar auto-play em desktop
-                photoFrames.forEach((frame) => {
-                    frame.classList.add('active');
-                    frame.style.opacity = '1';
-                    frame.style.position = 'relative';
-                    frame.style.transform = '';
+            const target = document.querySelector(href);
+            if (target) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
+                
+                // Fecha menu mobile se estiver aberto
+                const nav = document.getElementById('nav');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
             }
-        }, 250);
+        });
     });
 }
+
+// ========================================
+// MOBILE MENU
+// ========================================
+function initMobileMenu() {
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    
+    if (!menuToggle || !nav) return;
+    
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+    
+    // Fecha menu ao clicar em um link
+    nav.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+}
+
+// ========================================
+// FAQ ACCORDION
+// ========================================
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (!question) return;
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Fecha todos os outros
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle do item atual
+            item.classList.toggle('active', !isActive);
+        });
+    });
+}
+
+// ========================================
+// HEADER SCROLL EFFECT
+// ========================================
+function initHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
+
+// ========================================
+// RSVP FORM - UTILITIES
+// ========================================
+function normalizeName(name) {
+    // Remove acentos e converte para minúsculas
+    return name
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim();
+}
+
+function generateRSVPId(nome, sobrenome) {
+    // Gera ID único baseado em nome+sobrenome normalizado
+    const normalizedNome = normalizeName(nome || '');
+    const normalizedSobrenome = normalizeName(sobrenome || '');
+    return `rsvp_${normalizedNome}_${normalizedSobrenome}`;
+}
+
+function checkExistingRSVP(nome, sobrenome) {
+    const rsvpId = generateRSVPId(nome, sobrenome);
+    const existing = localStorage.getItem(rsvpId);
+    if (existing) {
+        try {
+            return JSON.parse(existing);
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
+function saveRSVP(data) {
+    const nomeCompleto = `${data.nome || ''} ${data.sobrenome || ''}`.trim();
+    const rsvpId = generateRSVPId(data.nome, data.sobrenome);
+    
+    const rsvpData = {
+        ...data,
+        nomeCompleto: nomeCompleto,
+        submittedAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem(rsvpId, JSON.stringify(rsvpData));
+    
+    // Mantém compatibilidade com código antigo (opcional)
+    localStorage.setItem('rsvp_submitted', JSON.stringify(rsvpData));
+}
+
+// ========================================
+// RSVP FORM
+// ========================================
+function initRSVPForm() {
+    const form = document.getElementById('rsvpForm');
+    const successDiv = document.getElementById('rsvpSuccess');
+    
+    if (!form) return;
+    
+    // Navegação entre steps
+    const nextButtons = form.querySelectorAll('.form-next');
+    const backButtons = form.querySelectorAll('.form-back');
+    
+    nextButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentStep = btn.closest('.form-step');
+            const nextStepNum = btn.getAttribute('data-next');
+            const nextStep = form.querySelector(`[data-step="${nextStepNum}"]`);
+            
+            if (nextStep) {
+                // Validação básica
+                if (validateStep(currentStep)) {
+                    currentStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                    nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+    
+    backButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentStep = btn.closest('.form-step');
+            const backStepNum = btn.getAttribute('data-back');
+            const backStep = form.querySelector(`[data-step="${backStepNum}"]`);
+            
+            if (backStep) {
+                currentStep.classList.remove('active');
+                backStep.classList.add('active');
+                backStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // Mostrar/esconder campo número de pessoas
+    const presencaRadios = form.querySelectorAll('input[name="presenca"]');
+    const numeroPessoasGroup = document.getElementById('numeroPessoasGroup');
+    const numeroPessoasInput = document.getElementById('numeroPessoas');
+    
+    if (presencaRadios.length && numeroPessoasGroup) {
+        presencaRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'sim') {
+                    numeroPessoasGroup.style.display = 'block';
+                    if (numeroPessoasInput) {
+                        numeroPessoasInput.required = true;
+                    }
+                } else {
+                    numeroPessoasGroup.style.display = 'none';
+                    if (numeroPessoasInput) {
+                        numeroPessoasInput.required = false;
+                    }
+                }
+            });
+        });
+    }
+    
+    // Submit do formulário
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!validateForm(form)) {
+            return;
+        }
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Verifica se já existe confirmação para este nome
+        const existingRSVP = checkExistingRSVP(data.nome, data.sobrenome);
+        let isUpdate = false;
+        
+        if (existingRSVP) {
+            isUpdate = true;
+            // Pergunta se deseja atualizar a confirmação existente
+            const nomeCompleto = `${data.nome || ''} ${data.sobrenome || ''}`.trim();
+            const confirmUpdate = confirm(
+                `Você já confirmou sua presença como "${nomeCompleto}".\n\n` +
+                `Deseja atualizar sua confirmação?\n\n` +
+                `Confirmação anterior:\n` +
+                `- Presença: ${existingRSVP.presenca === 'sim' ? 'Sim' : 'Não'}\n` +
+                `- Número de pessoas: ${existingRSVP.numeroPessoas || '1'}\n\n` +
+                `Clique em "OK" para atualizar ou "Cancelar" para manter a confirmação anterior.`
+            );
+            
+            if (!confirmUpdate) {
+                return; // Usuário cancelou, mantém confirmação anterior
+            }
+        }
+        
+        try {
+            // Formata o email em HTML bonito
+            const emailHTML = formatEmailHTML(data);
+            
+            // Envia o email usando EmailJS
+            await sendEmail(data, emailHTML);
+            
+            // Salva no localStorage (atualiza se já existir)
+            saveRSVP(data);
+            
+            // Mostra mensagem de sucesso
+            form.style.display = 'none';
+            if (successDiv) {
+                const successText = successDiv.querySelector('.success-text');
+                if (successText && isUpdate) {
+                    successText.textContent = 'Sua confirmação foi atualizada com sucesso! Obrigado por nos avisar sobre as mudanças.';
+                }
+                successDiv.style.display = 'block';
+                successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+        } catch (error) {
+            console.error('Erro ao enviar formulário:', error);
+            alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+        }
+    });
+    
+    // Verificação no passo 2 (quando tem nome/sobrenome)
+    const nomeInput = form.querySelector('#nome');
+    const sobrenomeInput = form.querySelector('#sobrenome');
+    const step2 = form.querySelector('[data-step="2"]');
+    
+    function checkDuplicateOnStep2() {
+        if (!nomeInput || !sobrenomeInput || !step2) return;
+        
+        const nome = nomeInput.value.trim();
+        const sobrenome = sobrenomeInput.value.trim();
+        
+        if (nome && sobrenome && step2.classList.contains('active')) {
+            const existingRSVP = checkExistingRSVP(nome, sobrenome);
+            
+            if (existingRSVP) {
+                // Remove aviso anterior se existir
+                const existingWarning = step2.querySelector('.duplicate-warning');
+                if (existingWarning) {
+                    existingWarning.remove();
+                }
+                
+                // Cria aviso visual
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'duplicate-warning';
+                warningDiv.innerHTML = `
+                    <div class="warning-icon">ℹ️</div>
+                    <div class="warning-content">
+                        <strong>Você já confirmou sua presença!</strong>
+                        <p>Se desejar atualizar sua confirmação, continue preenchendo o formulário.</p>
+                        <p class="warning-details">
+                            Confirmação anterior: ${existingRSVP.presenca === 'sim' ? 'Sim, presente' : 'Não poderei comparecer'} 
+                            ${existingRSVP.numeroPessoas ? `(${existingRSVP.numeroPessoas} pessoa${existingRSVP.numeroPessoas > 1 ? 's' : ''})` : ''}
+                        </p>
+                    </div>
+                `;
+                
+                const firstGroup = step2.querySelector('.form-group');
+                if (firstGroup) {
+                    step2.insertBefore(warningDiv, firstGroup);
+                }
+            } else {
+                // Remove aviso se não há duplicata
+                const existingWarning = step2.querySelector('.duplicate-warning');
+                if (existingWarning) {
+                    existingWarning.remove();
+                }
+            }
+        }
+    }
+    
+    if (nomeInput && sobrenomeInput) {
+        nomeInput.addEventListener('blur', checkDuplicateOnStep2);
+        sobrenomeInput.addEventListener('blur', checkDuplicateOnStep2);
+        
+        // Verifica quando step 2 fica ativo
+        const observer = new MutationObserver(() => {
+            if (step2 && step2.classList.contains('active')) {
+                setTimeout(checkDuplicateOnStep2, 100);
+            }
+        });
+        observer.observe(step2, { attributes: true, attributeFilter: ['class'] });
+    }
+}
+
+// ========================================
+// EMAIL FORMATTING
+// ========================================
+function formatEmailHTML(data) {
+    const nomeCompleto = `${data.nome || ''} ${data.sobrenome || ''}`.trim();
+    const presenca = data.presenca === 'sim' ? 'Sim, estarei presente' : 'Não, não poderei comparecer';
+    const numeroPessoas = data.presenca === 'sim' ? (data.numeroPessoas || '1') : '0';
+    const observacoes = data.observacoes || 'Nenhuma observação';
+    
+    return `
+<div style="font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; color: #1F1F1F; background-color: #F7F4EF; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; padding: 40px;">
+        <div style="text-align: center; border-bottom: 2px solid #C8A45D; padding-bottom: 20px; margin-bottom: 30px;">
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #1F1F1F; margin: 0; letter-spacing: 1px;">Casamento - Confirmação de Presença</h1>
+            <div style="font-size: 16px; color: #6B6B6B; margin-top: 8px;">10 de abril de 2027</div>
+        </div>
+        
+        <div style="color: #1F1F1F;">
+            <p>Olá!</p>
+            <p>Recebemos uma nova confirmação de presença para nosso casamento.</p>
+            
+            <div style="margin: 25px 0; padding: 20px; background-color: #F7F4EF; border-left: 3px solid #C8A45D;">
+                <div style="margin: 12px 0;">
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Nome:</span>
+                    <span style="color: #6B6B6B;">${nomeCompleto}</span>
+                </div>
+                <div style="margin: 12px 0;">
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Presença:</span>
+                    <span style="color: #6B6B6B;">${presenca}</span>
+                </div>
+                ${data.presenca === 'sim' ? `
+                <div style="margin: 12px 0;">
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Número de pessoas:</span>
+                    <span style="color: #6B6B6B;">${numeroPessoas}</span>
+                </div>
+                ` : ''}
+                ${data.observacoes ? `
+                <div style="margin: 12px 0;">
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Observações:</span>
+                    <span style="color: #6B6B6B;">${observacoes}</span>
+                </div>
+                ` : ''}
+            </div>
+            
+            <p>Esta confirmação foi enviada automaticamente através do site do casamento.</p>
+        </div>
+        
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #E0E0E0; text-align: center; font-size: 14px; color: #6B6B6B;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 18px; color: #1F1F1F; margin-top: 10px;">Suzana & Eric</div>
+            <div>10 de abril de 2027</div>
+        </div>
+    </div>
+</div>
+    `.trim();
+}
+
+// ========================================
+// EMAIL SENDING (EmailJS)
+// ========================================
+async function sendEmail(data, emailHTML) {
+    // Inicializa EmailJS (substitua 'YOUR_PUBLIC_KEY' pela sua chave pública do EmailJS)
+    // Para obter a chave: https://www.emailjs.com/
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS não está carregado');
+        throw new Error('Serviço de email não disponível');
+    }
+    
+    emailjs.init('RUCANfHn1ROI5Gq5X');
+    
+    const templateParams = {
+        to_email: 'ericmelomp@gmail.com',
+        subject: 'Casamento - Confirmação de Presença',
+        message_html: emailHTML,
+        nome: `${data.nome || ''} ${data.sobrenome || ''}`.trim(),
+        presenca: data.presenca === 'sim' ? 'Sim' : 'Não',
+        numero_pessoas: data.numeroPessoas || '1',
+        observacoes: data.observacoes || 'Nenhuma observação'
+    };
+    
+    // Envia o email
+    await emailjs.send('service_2eu69yh', 'template_9dqwxqj', templateParams);
+}
+
+function validateStep(step) {
+    const requiredInputs = step.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
+    
+    requiredInputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#d32f2f';
+            setTimeout(() => {
+                input.style.borderColor = '';
+            }, 2000);
+        } else {
+            input.style.borderColor = '';
+        }
+    });
+    
+    // Validação específica para radio buttons
+    const radioGroups = step.querySelectorAll('input[type="radio"][required]');
+    if (radioGroups.length > 0) {
+        const groupName = radioGroups[0].name;
+        const checked = step.querySelector(`input[name="${groupName}"]:checked`);
+        if (!checked) {
+            isValid = false;
+        }
+    }
+    
+    return isValid;
+}
+
+function validateForm(form) {
+    const steps = form.querySelectorAll('.form-step');
+    let isValid = true;
+    
+    steps.forEach(step => {
+        if (!validateStep(step)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+// ========================================
+// CALENDAR ICS GENERATION
+// ========================================
+function generateICS() {
+    const eventDate = new Date('2027-04-10T16:00:00');
+    const endDate = new Date(eventDate);
+    endDate.setHours(22, 0, 0);
+    
+    const formatDate = (date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+    
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Suzana & Eric//Wedding//PT',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `DTSTART:${formatDate(eventDate)}`,
+        `DTEND:${formatDate(endDate)}`,
+        `DTSTAMP:${formatDate(new Date())}`,
+        'SUMMARY:Casamento de Suzana & Eric',
+        'DESCRIPTION:Celebração do casamento de Suzana & Eric',
+        'LOCATION:R. Maria Emília, 101 - Somma, Ribeirão Pires - SP, 09445-740, Brasil',
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
+        'BEGIN:VALARM',
+        'TRIGGER:-P1D',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:O casamento é amanhã!',
+        'END:VALARM',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+    
+    const blob = new Blob([icsContent], { type: 'text/calendar' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'casamento-suzana-eric.ics';
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+// ========================================
+// MAPS INTEGRATION
+// ========================================
+function initMapsIntegration() {
+    const openMapsBtn = document.getElementById('openMaps');
+    const directionsBtn = document.getElementById('directions');
+    const saveCalendarBtn = document.getElementById('saveCalendar');
+    
+    // Coordenadas e endereço
+    const address = 'R. Maria Emília, 101 - Somma, Ribeirão Pires - SP, 09445-740, Brasil';
+    const lat = -23.71265;
+    const lng = -46.35619;
+    
+    if (openMapsBtn) {
+        openMapsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Abre no Google Maps (link compartilhável)
+            window.open('https://maps.app.goo.gl/C7EvoLFLMVEzwtj66', '_blank');
+        });
+    }
+    
+    if (directionsBtn) {
+        directionsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Abre rotas no Google Maps
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+        });
+    }
+    
+    if (saveCalendarBtn) {
+        saveCalendarBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            generateICS();
+        });
+    }
+}
+
+// ========================================
+// INTERSECTION OBSERVER (ANIMATIONS)
+// ========================================
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observa elementos que devem ter animação
+    document.querySelectorAll('.info-card, .historia-content, .timeline-item, .faq-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+// ========================================
+// INITIALIZE ALL
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    initCountdown();
+    initSmoothScroll();
+    initMobileMenu();
+    initFAQ();
+    initHeaderScroll();
+    initRSVPForm();
+    initMapsIntegration();
+    initScrollAnimations();
+    
+    // Verifica se já submeteu RSVP
+    const rsvpSubmitted = localStorage.getItem('rsvp_submitted');
+    if (rsvpSubmitted && window.location.pathname.includes('rsvp')) {
+        const form = document.getElementById('rsvpForm');
+        const successDiv = document.getElementById('rsvpSuccess');
+        if (form && successDiv) {
+            form.style.display = 'none';
+            successDiv.style.display = 'block';
+        }
+    }
+});

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lista de presentes - Casamento de Suzana & Eric - 10 de abril de 2027">
+    <title>Lista de Presentes - Suzana & Eric</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-placeholder">SE</div>
+            </a>
+            <nav class="nav">
+                <a href="/" class="nav-link">Voltar para o site</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="presentes-page">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Lista de presentes</h1>
+                <div class="section-divider"></div>
+                <p class="presentes-intro">Sua presença é o maior presente! Mas se quiser nos presentear, confira nossa lista de presentes.</p>
+            </div>
+
+            <div class="presentes-options">
+                <div class="presentes-card">
+                    <h3 class="presentes-card-title">Lista externa</h3>
+                    <p class="presentes-card-text">Acesse nossa lista de presentes em uma das lojas parceiras.</p>
+                    <a href="#" class="btn btn-primary" id="openExternalList" target="_blank">Abrir lista externa</a>
+                </div>
+            </div>
+
+            <!-- Opção para lista integrada (comentar se usar apenas externa) -->
+            <!--
+            <div class="presentes-grid">
+                <div class="presente-item">
+                    <div class="presente-image">
+                        <img src="assets/presente1.jpg" alt="Presente" onerror="this.style.display='none';">
+                        <div class="presente-placeholder">SE</div>
+                    </div>
+                    <div class="presente-content">
+                        <h3 class="presente-title">Nome do Presente</h3>
+                        <p class="presente-description">Descrição do presente</p>
+                        <div class="presente-status">
+                            <span class="status-badge">Disponível</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small">Selecionar</a>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="footer-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="footer-logo">SE</div>
+                <p class="footer-text">Suzana & Eric — 10 de abril de 2027</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

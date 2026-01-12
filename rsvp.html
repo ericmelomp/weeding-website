@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirme sua presença no casamento de Suzana & Eric - 10 de abril de 2027">
+    <title>Confirmar Presença - Suzana & Eric</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-placeholder">SE</div>
+            </a>
+            <nav class="nav">
+                <a href="/" class="nav-link">Voltar para o site</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="rsvp-page">
+        <div class="container">
+            <div class="rsvp-header">
+                <h1 class="rsvp-title">Confirmar presença</h1>
+                <p class="rsvp-subtitle">Esperamos celebrar nosso grande dia ao seu lado</p>
+            </div>
+
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-step active" data-step="1">
+                    <div class="form-group">
+                        <label for="nome" class="form-label">Nome *</label>
+                        <input type="text" id="nome" name="nome" class="form-input" required autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sobrenome" class="form-label">Sobrenome *</label>
+                        <input type="text" id="sobrenome" name="sobrenome" class="form-input" required autocomplete="family-name">
+                    </div>
+                    <button type="button" class="btn btn-primary form-next" data-next="2">Continuar</button>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <div class="form-group">
+                        <label class="form-label">Você vai? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="presenca" value="sim" required>
+                                <span class="radio-custom"></span>
+                                <span>Sim, estarei presente</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="presenca" value="nao" required>
+                                <span class="radio-custom"></span>
+                                <span>Não, não poderei comparecer</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="numeroPessoasGroup" style="display: none;">
+                        <label for="numeroPessoas" class="form-label">Número de pessoas *</label>
+                        <input type="number" id="numeroPessoas" name="numeroPessoas" class="form-input" min="1" value="1">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline form-back" data-back="1">Voltar</button>
+                        <button type="button" class="btn btn-primary form-next" data-next="3">Continuar</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <div class="form-group">
+                        <label for="observacoes" class="form-label">Observações (opcional)</label>
+                        <textarea id="observacoes" name="observacoes" class="form-textarea" rows="3" placeholder="Alguma mensagem ou observação adicional?"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline form-back" data-back="2">Voltar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="rsvp-success" id="rsvpSuccess" style="display: none;">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="success-title">Presença confirmada</h2>
+                    <p class="success-text">Obrigado por confirmar sua presença! Estamos muito felizes em ter você conosco nesse dia especial.</p>
+                    <div class="success-actions">
+                        <a href="/" class="btn btn-outline">Voltar para o site</a>
+                        <a href="/#grande-dia" class="btn btn-primary">Ver local</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="footer-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="footer-logo">SE</div>
+                <p class="footer-text">Suzana & Eric — 10 de abril de 2027</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
