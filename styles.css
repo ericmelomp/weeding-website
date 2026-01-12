@@ -214,23 +214,6 @@ body {
     min-height: 1.2em; /* Evita mudança de altura durante a animação */
 }
 
-.typing-cursor {
-    display: inline-block;
-    color: var(--color-gold);
-    font-weight: 300;
-    animation: blinkCursor 1s infinite;
-    margin-left: 2px;
-}
-
-@keyframes blinkCursor {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0;
-    }
-}
-
 .hero-date {
     font-family: var(--font-sans);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
@@ -562,10 +545,11 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--color-gold-light);
-    display: flex;
+    background: linear-gradient(135deg, rgba(200, 164, 93, 0.15) 0%, rgba(200, 164, 93, 0.25) 100%);
+    display: none;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
 }
 
 .brasao-placeholder-large {

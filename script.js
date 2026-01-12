@@ -6,39 +6,21 @@ function initTypingAnimation() {
     if (!heroTitle) return;
     
     const fullText = heroTitle.textContent.trim();
-    const speed = 100; // Velocidade de digitação em ms por caractere
+    const speed = 200; // Velocidade de digitação em ms por caractere (mais lenta)
     let charIndex = 0;
     
     // Limpa o texto inicial
     heroTitle.textContent = '';
     
-    // Adiciona cursor piscando
-    const cursor = document.createElement('span');
-    cursor.className = 'typing-cursor';
-    cursor.textContent = '|';
-    heroTitle.appendChild(cursor);
-    
     function typeChar() {
         if (charIndex < fullText.length) {
-            // Remove o cursor temporariamente
-            cursor.remove();
-            
             // Adiciona o próximo caractere
             heroTitle.textContent += fullText[charIndex];
-            
-            // Re-adiciona o cursor
-            heroTitle.appendChild(cursor);
             
             charIndex++;
             
             // Continua digitando
             setTimeout(typeChar, speed);
-        } else {
-            // Animação completa - remove o cursor após um breve delay
-            setTimeout(() => {
-                cursor.style.opacity = '0';
-                setTimeout(() => cursor.remove(), 300);
-            }, 500);
         }
     }
     
