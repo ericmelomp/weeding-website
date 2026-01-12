@@ -1021,6 +1021,40 @@ section {
     flex: 1;
 }
 
+.form-hint {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+    display: block;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.acompanhante-item {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: rgba(200, 164, 93, 0.05);
+    border: 1px solid var(--color-gold-border);
+    border-radius: 4px;
+}
+
+.acompanhante-header {
+    margin-bottom: var(--spacing-sm);
+}
+
+.acompanhante-label {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
 .duplicate-warning {
     display: flex;
     align-items: flex-start;

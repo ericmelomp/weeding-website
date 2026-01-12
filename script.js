@@ -282,10 +282,49 @@ function initRSVPForm() {
         });
     });
     
-    // Mostrar/esconder campo número de pessoas
+    // Mostrar/esconder campo número de pessoas e acompanhantes
     const presencaRadios = form.querySelectorAll('input[name="presenca"]');
     const numeroPessoasGroup = document.getElementById('numeroPessoasGroup');
     const numeroPessoasInput = document.getElementById('numeroPessoas');
+    const acompanhantesGroup = document.getElementById('acompanhantesGroup');
+    const acompanhantesContainer = document.getElementById('acompanhantesContainer');
+    
+    function updateAcompanhantesFields() {
+        if (!acompanhantesContainer || !numeroPessoasInput) return;
+        
+        const numAcompanhantes = parseInt(numeroPessoasInput.value) || 0;
+        
+        // Limpa campos existentes
+        acompanhantesContainer.innerHTML = '';
+        
+        if (numAcompanhantes > 0) {
+            acompanhantesGroup.style.display = 'block';
+            
+            // Cria campos para cada acompanhante
+            for (let i = 1; i <= numAcompanhantes; i++) {
+                const acompanhanteDiv = document.createElement('div');
+                acompanhanteDiv.className = 'acompanhante-item';
+                acompanhanteDiv.innerHTML = `
+                    <div class="acompanhante-header">
+                        <label class="acompanhante-label">Acompanhante ${i}</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1; margin-right: 1rem;">
+                            <label for="acompanhante_nome_${i}" class="form-label">Nome *</label>
+                            <input type="text" id="acompanhante_nome_${i}" name="acompanhante_nome_${i}" class="form-input" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="acompanhante_sobrenome_${i}" class="form-label">Sobrenome *</label>
+                            <input type="text" id="acompanhante_sobrenome_${i}" name="acompanhante_sobrenome_${i}" class="form-input" required>
+                        </div>
+                    </div>
+                `;
+                acompanhantesContainer.appendChild(acompanhanteDiv);
+            }
+        } else {
+            acompanhantesGroup.style.display = 'none';
+        }
+    }
     
     if (presencaRadios.length && numeroPessoasGroup) {
         presencaRadios.forEach(radio => {
@@ -294,15 +333,24 @@ function initRSVPForm() {
                     numeroPessoasGroup.style.display = 'block';
                     if (numeroPessoasInput) {
                         numeroPessoasInput.required = true;
+                        numeroPessoasInput.value = '0';
+                        updateAcompanhantesFields();
                     }
                 } else {
                     numeroPessoasGroup.style.display = 'none';
+                    acompanhantesGroup.style.display = 'none';
                     if (numeroPessoasInput) {
                         numeroPessoasInput.required = false;
                     }
                 }
             });
         });
+        
+        // Atualiza campos quando o número de acompanhantes muda
+        if (numeroPessoasInput) {
+            numeroPessoasInput.addEventListener('input', updateAcompanhantesFields);
+            numeroPessoasInput.addEventListener('change', updateAcompanhantesFields);
+        }
     }
     
     // Submit do formulário
@@ -339,11 +387,22 @@ function initRSVPForm() {
         }
         
         try {
+            // Coleta dados dos acompanhantes antes de formatar
+            const acompanhantesData = {};
+            if (data.presenca === 'sim' && data.numeroPessoas) {
+                const numAcomp = parseInt(data.numeroPessoas) || 0;
+                for (let i = 1; i <= numAcomp; i++) {
+                    acompanhantesData[`acompanhante_nome_${i}`] = data[`acompanhante_nome_${i}`] || '';
+                    acompanhantesData[`acompanhante_sobrenome_${i}`] = data[`acompanhante_sobrenome_${i}`] || '';
+                }
+            }
+            const dataCompleto = { ...data, ...acompanhantesData };
+            
             // Formata o email em HTML bonito
-            const emailHTML = formatEmailHTML(data);
+            const emailHTML = formatEmailHTML(dataCompleto);
             
             // Envia o email usando EmailJS
-            await sendEmail(data, emailHTML);
+            await sendEmail(dataCompleto, emailHTML);
             
             // Salva no localStorage (atualiza se já existir)
             saveRSVP(data);
@@ -361,7 +420,26 @@ function initRSVPForm() {
             
         } catch (error) {
             console.error('Erro ao enviar formulário:', error);
-            alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+            console.error('Detalhes do erro:', {
+                message: error.message,
+                text: error.text,
+                status: error.status
+            });
+            
+            let errorMessage = 'Ocorreu um erro ao enviar. Por favor, tente novamente.';
+            
+            // Mensagens de erro mais específicas
+            if (error.status === 400) {
+                errorMessage = 'Erro na configuração do EmailJS. Verifique o Service ID e Template ID.';
+            } else if (error.status === 401) {
+                errorMessage = 'Erro de autenticação. Verifique a Public Key do EmailJS.';
+            } else if (error.status === 404) {
+                errorMessage = 'Service ID ou Template ID não encontrado. Verifique as configurações.';
+            } else if (error.text) {
+                errorMessage = `Erro: ${error.text}`;
+            }
+            
+            alert(errorMessage);
         }
     });
     
@@ -435,8 +513,21 @@ function initRSVPForm() {
 function formatEmailHTML(data) {
     const nomeCompleto = `${data.nome || ''} ${data.sobrenome || ''}`.trim();
     const presenca = data.presenca === 'sim' ? 'Sim, estarei presente' : 'Não, não poderei comparecer';
-    const numeroPessoas = data.presenca === 'sim' ? (data.numeroPessoas || '1') : '0';
+    const numAcompanhantes = data.presenca === 'sim' ? (parseInt(data.numeroPessoas) || 0) : 0;
+    const totalPessoas = numAcompanhantes + 1; // Convidado + acompanhantes
     const observacoes = data.observacoes || 'Nenhuma observação';
+    
+    // Coleta informações dos acompanhantes
+    const acompanhantes = [];
+    if (data.presenca === 'sim' && numAcompanhantes > 0) {
+        for (let i = 1; i <= numAcompanhantes; i++) {
+            const nomeAcomp = data[`acompanhante_nome_${i}`] || '';
+            const sobrenomeAcomp = data[`acompanhante_sobrenome_${i}`] || '';
+            if (nomeAcomp || sobrenomeAcomp) {
+                acompanhantes.push(`${nomeAcomp} ${sobrenomeAcomp}`.trim());
+            }
+        }
+    }
     
     return `
 <div style="font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; color: #1F1F1F; background-color: #F7F4EF; margin: 0; padding: 20px;">
@@ -461,8 +552,16 @@ function formatEmailHTML(data) {
                 </div>
                 ${data.presenca === 'sim' ? `
                 <div style="margin: 12px 0;">
-                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Número de pessoas:</span>
-                    <span style="color: #6B6B6B;">${numeroPessoas}</span>
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Total de pessoas:</span>
+                    <span style="color: #6B6B6B;">${totalPessoas} ${totalPessoas === 1 ? 'pessoa' : 'pessoas'}</span>
+                </div>
+                ` : ''}
+                ${acompanhantes.length > 0 ? `
+                <div style="margin: 12px 0;">
+                    <span style="font-weight: 600; color: #1F1F1F; min-width: 140px; display: inline-block;">Acompanhantes:</span>
+                    <div style="color: #6B6B6B; margin-top: 4px;">
+                        ${acompanhantes.map((nome, idx) => `<div style="margin: 4px 0;">${idx + 1}. ${nome}</div>`).join('')}
+                    </div>
                 </div>
                 ` : ''}
                 ${data.observacoes ? `
@@ -498,18 +597,45 @@ async function sendEmail(data, emailHTML) {
     
     emailjs.init('RUCANfHn1ROI5Gq5X');
     
+    const nomeCompleto = `${data.nome || ''} ${data.sobrenome || ''}`.trim();
+    
+    // Calcula acompanhantes e total de pessoas
+    const numAcompanhantes = data.presenca === 'sim' ? (parseInt(data.numeroPessoas) || 0) : 0;
+    const totalPessoas = numAcompanhantes + 1; // Convidado + acompanhantes
+    
+    const acompanhantes = [];
+    if (data.presenca === 'sim' && numAcompanhantes > 0) {
+        for (let i = 1; i <= numAcompanhantes; i++) {
+            const nomeAcomp = data[`acompanhante_nome_${i}`] || '';
+            const sobrenomeAcomp = data[`acompanhante_sobrenome_${i}`] || '';
+            if (nomeAcomp || sobrenomeAcomp) {
+                acompanhantes.push(`${nomeAcomp} ${sobrenomeAcomp}`.trim());
+            }
+        }
+    }
+    
     const templateParams = {
         to_email: 'ericmelomp@gmail.com',
         subject: 'Casamento - Confirmação de Presença',
         message_html: emailHTML,
-        nome: `${data.nome || ''} ${data.sobrenome || ''}`.trim(),
+        name: nomeCompleto,  // Template pode esperar 'name' em vez de 'nome'
+        email: 'casamentosuzeri@outlook.com',  // Email do remetente (Outlook service)
+        nome: nomeCompleto,  // Mantém para compatibilidade
         presenca: data.presenca === 'sim' ? 'Sim' : 'Não',
-        numero_pessoas: data.numeroPessoas || '1',
+        numero_pessoas: data.presenca === 'sim' ? totalPessoas.toString() : '0',
+        acompanhantes: acompanhantes.length > 0 ? acompanhantes.join(', ') : 'Nenhum',
         observacoes: data.observacoes || 'Nenhuma observação'
     };
     
+    // Log para debug
+    console.log('Enviando email com parâmetros:', {
+        service_id: 'service_ip2ourp',
+        template_id: 'template_9dqwxqj',
+        params: templateParams
+    });
+    
     // Envia o email
-    await emailjs.send('service_2eu69yh', 'template_9dqwxqj', templateParams);
+    await emailjs.send('service_ip2ourp', 'template_9dqwxqj', templateParams);
 }
 
 function validateStep(step) {
