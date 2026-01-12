@@ -35,7 +35,7 @@ docker-compose logs -f
 docker-compose down
 ```
 
-O site estará disponível em: `http://localhost`
+O site estará disponível em: `http://localhost:8080`
 
 ### Sem Docker
 
