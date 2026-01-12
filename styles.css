@@ -620,51 +620,6 @@ section {
 /* ========================================
    TRAJE
    ======================================== */
-.traje {
-    background: var(--color-bg);
-}
-
-.traje-content {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.traje-text {
-    font-family: var(--font-sans);
-    font-size: 1.1rem;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-}
-
-.paleta-traje {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-sm);
-    margin: var(--spacing-lg) 0;
-    flex-wrap: wrap;
-}
-
-.color-swatch {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid var(--color-gold-border);
-    transition: var(--transition);
-}
-
-.color-swatch:hover {
-    transform: scale(1.1);
-    border-color: var(--color-gold);
-}
-
-.traje-avoid {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    color: var(--color-text-light);
-    font-style: italic;
-}
-
 /* ========================================
    PRESENTES
    ======================================== */
@@ -697,6 +652,18 @@ section {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.presentes-observacao {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    line-height: 1.6;
 }
 
 .presentes-options {
