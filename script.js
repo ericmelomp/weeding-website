@@ -578,7 +578,7 @@ function generateICS() {
         `DTSTAMP:${formatDate(new Date())}`,
         'SUMMARY:Casamento de Suzana & Eric',
         'DESCRIPTION:Celebração do casamento de Suzana & Eric',
-        'LOCATION:R. Maria Emília, 101 - Somma, Ribeirão Pires - SP, 09445-740, Brasil',
+        'LOCATION:Chácara Flores - R. Maria Emília, 101 - Somma, Ribeirão Pires - SP, 09445-740, Brasil',
         'STATUS:CONFIRMED',
         'SEQUENCE:0',
         'BEGIN:VALARM',
