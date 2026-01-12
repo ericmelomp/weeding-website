@@ -17,6 +17,9 @@ COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 
 # Copia assets (imagens) para o container
+# Garante que o diretório existe primeiro
+RUN mkdir -p /usr/share/nginx/html/assets
+# Copia o diretório assets completo (inclui todos os arquivos)
 COPY assets/ /usr/share/nginx/html/assets/
 
 # Expõe porta 80

@@ -1,0 +1,35 @@
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+nul
+
+# Arquivos de log
+*.log
+
+# Node modules
+node_modules/
+
+# Arquivos de ambiente
+.env
+.env.local
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Documentação (opcional - descomente se quiser excluir)
+# README.md
+# *.md
+
+# IMPORTANTE: NÃO ignorar assets/ - eles precisam ser copiados para o container
+# O diretório assets/ e seus arquivos devem estar disponíveis no contexto de build
