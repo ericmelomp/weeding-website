@@ -210,7 +210,25 @@ body {
     color: var(--color-text);
     margin-bottom: var(--spacing-sm);
     letter-spacing: 2px;
-    animation: fadeInUp 0.8s ease;
+    /* Animação de digitação será controlada via JavaScript */
+    min-height: 1.2em; /* Evita mudança de altura durante a animação */
+}
+
+.typing-cursor {
+    display: inline-block;
+    color: var(--color-gold);
+    font-weight: 300;
+    animation: blinkCursor 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blinkCursor {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
 }
 
 .hero-date {
