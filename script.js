@@ -820,6 +820,52 @@ function initScrollAnimations() {
 }
 
 // ========================================
+// HISTORIA TOGGLE
+// ========================================
+function initHistoriaToggle() {
+    const toggle = document.getElementById('historiaToggle');
+    const historiaCompleta = document.getElementById('historiaCompleta');
+    const historiaSimplificada = document.getElementById('historiaSimplificada');
+    const labels = document.querySelectorAll('.toggle-label');
+    
+    if (!toggle || !historiaCompleta || !historiaSimplificada) return;
+    
+    function updateLabels() {
+        labels.forEach((label, index) => {
+            if (toggle.checked) {
+                // Simplificada ativa
+                label.classList.toggle('active', index === 1);
+            } else {
+                // Completa ativa
+                label.classList.toggle('active', index === 0);
+            }
+        });
+    }
+    
+    // Carrega preferência salva
+    const savedPreference = localStorage.getItem('historiaVersion');
+    if (savedPreference === 'simplificada') {
+        toggle.checked = true;
+        historiaCompleta.style.display = 'none';
+        historiaSimplificada.style.display = 'block';
+    }
+    updateLabels();
+    
+    toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+            historiaCompleta.style.display = 'none';
+            historiaSimplificada.style.display = 'block';
+            localStorage.setItem('historiaVersion', 'simplificada');
+        } else {
+            historiaCompleta.style.display = 'block';
+            historiaSimplificada.style.display = 'none';
+            localStorage.setItem('historiaVersion', 'completa');
+        }
+        updateLabels();
+    });
+}
+
+// ========================================
 // INITIALIZE ALL
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -832,6 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRSVPForm();
     initMapsIntegration();
     initScrollAnimations();
+    initHistoriaToggle();
     
     // Verifica se já submeteu RSVP
     const rsvpSubmitted = localStorage.getItem('rsvp_submitted');
