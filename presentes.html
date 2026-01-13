@@ -34,6 +34,22 @@
             <div class="presentes-grid">
                 <div class="presente-item">
                     <div class="presente-image">
+                        <img src="assets/qrcode.jpeg" alt="QR Code PIX" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="presente-placeholder" style="display:none;">SE</div>
+                    </div>
+                    <div class="presente-content">
+                        <h3 class="presente-title">PIX</h3>
+                        <button class="btn btn-primary btn-small" id="copyPixBtn" onclick="copyPixCode()">
+                            Copiar código PIX
+                        </button>
+                        <p class="pix-copied-message" id="pixCopiedMessage" style="display: none; margin-top: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">
+                            Código copiado! 💛
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="presente-item">
+                    <div class="presente-image">
                         <img src="assets/geladeira.png" alt="Geladeira Electrolux" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="presente-placeholder" style="display:none;">SE</div>
                     </div>
@@ -209,5 +225,48 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function copyPixCode() {
+            const pixCode = '00020126660014BR.GOV.BCB.PIX0111431773188670229Agradecemos demais sua ajuda!5204000053039865802BR5917ERIC MELO PEREIRA6004MAUA62250521lS73N0fDqHaow3D7KcYx8630459FF';
+            
+            // Tenta usar a API moderna de clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(pixCode).then(() => {
+                    showCopiedMessage();
+                }).catch(() => {
+                    fallbackCopy(pixCode);
+                });
+            } else {
+                // Fallback para navegadores mais antigos
+                fallbackCopy(pixCode);
+            }
+        }
+        
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopiedMessage();
+            } catch (err) {
+                alert('Não foi possível copiar. Código PIX: ' + text);
+            }
+            document.body.removeChild(textArea);
+        }
+        
+        function showCopiedMessage() {
+            const message = document.getElementById('pixCopiedMessage');
+            if (message) {
+                message.style.display = 'block';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
 </body>
 </html>
