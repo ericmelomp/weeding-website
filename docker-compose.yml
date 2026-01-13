@@ -22,3 +22,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token eyJhIjoiY2VhZWEzOTI0MzQzMTk4MGU2ZTQyNzZjYTk2ZWI2ZWUiLCJ0IjoiYWMwYmM5MGMtZWE3NS00NWY3LTllMDUtZTM5MmRmNTRkYmI0IiwicyI6Ik9EQmpaRGxsTWpZdE5qTmhNQzAwTVRObUxUZ3lOemd0WXpJM1ltTmxaR1l6TnpZdyJ9
