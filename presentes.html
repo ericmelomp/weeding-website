@@ -169,10 +169,15 @@
             
             let presentesFiltrados = [];
             
+            // Separa presentes PIX dos demais
+            const presentesPix = todosPresentes.filter(p => p.tipo === 'pix');
+            const presentesNormais = todosPresentes.filter(p => p.tipo !== 'pix');
+            
             if (faixa === 'all') {
                 presentesFiltrados = todosPresentes;
             } else {
-                presentesFiltrados = todosPresentes.filter(presente => {
+                // Filtra apenas os presentes normais por preço
+                const normaisFiltrados = presentesNormais.filter(presente => {
                     const preco = presente.preco || 0;
                     
                     switch(faixa) {
@@ -192,6 +197,9 @@
                             return true;
                     }
                 });
+                
+                // Sempre inclui os presentes PIX, independentemente do filtro
+                presentesFiltrados = [...presentesPix, ...normaisFiltrados];
             }
             
             renderPresentes(presentesFiltrados);
