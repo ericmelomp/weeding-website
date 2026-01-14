@@ -9,6 +9,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .filtros-preco {
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background: rgba(200, 164, 93, 0.05);
+            border-radius: 8px;
+        }
+
+        .filtros-label {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+
+        .filtros-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .filtro-btn {
+            padding: 0.6rem 1.2rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            background: white;
+            border: 1px solid var(--color-gold-border);
+            border-radius: 4px;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filtro-btn:hover {
+            border-color: var(--color-gold);
+            background: var(--color-gold-light);
+        }
+
+        .filtro-btn.active {
+            background: var(--color-gold);
+            color: white;
+            border-color: var(--color-gold);
+        }
+
+        @media (max-width: 768px) {
+            .filtros-buttons {
+                flex-direction: column;
+            }
+
+            .filtro-btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -31,188 +86,21 @@
                 <p class="presentes-observacao">Esta lista serve apenas como referência. Aceitaremos de bom grado qualquer item ou valor que desejarem nos oferecer. O que realmente importa é celebrar este momento especial ao lado de quem amamos.</p>
             </div>
 
-            <div class="presentes-grid">
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/qrcode.jpeg" alt="QR Code PIX" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">PIX</h3>
-                        <p class="pix-message" style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-light); margin-bottom: var(--spacing-md); line-height: 1.6;">
-                            Se preferir, você também pode contribuir com qualquer valor via PIX. Será uma ajuda muito especial para começarmos nossa vida a dois! <span style="color: #E91E63;">❤️</span>
-                        </p>
-                        <button class="btn btn-primary btn-small" id="copyPixBtn" onclick="copyPixCode()">
-                            Copiar código PIX
-                        </button>
-                        <p class="pix-copied-message" id="pixCopiedMessage" style="display: none; margin-top: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">
-                            Código copiado! 💛
-                        </p>
-                    </div>
+            <div class="filtros-preco">
+                <p class="filtros-label">Filtrar por faixa de preço:</p>
+                <div class="filtros-buttons">
+                    <button class="filtro-btn" data-faixa="all" onclick="filtrarPorPreco('all')">Todos</button>
+                    <button class="filtro-btn" data-faixa="0-50" onclick="filtrarPorPreco('0-50')">Até R$50</button>
+                    <button class="filtro-btn" data-faixa="50-150" onclick="filtrarPorPreco('50-150')">R$50 - R$150</button>
+                    <button class="filtro-btn" data-faixa="150-400" onclick="filtrarPorPreco('150-400')">R$150 - R$400</button>
+                    <button class="filtro-btn" data-faixa="400-800" onclick="filtrarPorPreco('400-800')">R$400 - R$800</button>
+                    <button class="filtro-btn" data-faixa="800-1000" onclick="filtrarPorPreco('800-1000')">R$800 - R$1.000</button>
+                    <button class="filtro-btn" data-faixa="1000+" onclick="filtrarPorPreco('1000+')">R$1.000+</button>
                 </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/geladeira.png" alt="Geladeira Electrolux" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Geladeira</h3>
-                        <a href="https://www.google.com/search?q=Geladeira+Electrolux+Frost+Free+Inverter+590L+AutoSense+3+Portas+Cor+Inox+Look&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n6sIjNAz1iUBIZ8VCe1om1mq_Hegg%3A1768247159559&ei=d09laZnsIZ_C5OUPy5P1sAg&ved=0ahUKEwjZg8j-4YaSAxUfIbkGHctJHYYQ4dUDCBE&uact=5&oq=Geladeira+Electrolux+Frost+Free+Inverter+590L+AutoSense+3+Portas+Cor+Inox+Look&gs_lp=Egxnd3Mtd2l6LXNlcnAiTkdlbGFkZWlyYSBFbGVjdHJvbHV4IEZyb3N0IEZyZWUgSW52ZXJ0ZXIgNTkwTCBBdXRvU2Vuc2UgMyBQb3J0YXMgQ29yIElub3ggTG9vazIFEAAYgAQyBRAAGIAEMgUQABiABEj4BVAAWABwAHgBkAEAmAFYoAFYqgEBMbgBA8gBAPgBAvgBAZgCAaACW5gDAJIHATGgB70DsgcBMbgHW8IHAzAuMcgHAoAIAQ&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/lava_seca.png" alt="Lava e Seca" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Lava e Seca</h3>
-                        <a href="https://www.google.com/search?q=WD11A4453BX&rlz=1C1UEAD_enBR1145BR1145&biw=1920&bih=911&aic=0&sca_esv=e9a6b6505834f0c4&sxsrf=ANbL-n5w47fWPqnMa0atMO8GUq6rYbd9eA%3A1768249412938&ei=RFhlabL8ONTX1sQP_f7I0QM&ved=0ahUKEwiyroex6oaSAxXUq5UCHX0_MjoQ4dUDCBE&uact=5&oq=WD11A4453BX&gs_lp=Egxnd3Mtd2l6LXNlcnAiC1dEMTFBNDQ1M0JYMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEiWBVAAWABwAHgBkAEAmAFsoAFsqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAJwmAMAkgcDMC4xoAevBLIHAzAuMbgHcMIHAzAuMcgHAoAIAQ&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/televisao.png" alt="Televisão 60'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Televisão 60'</h3>
-                        <a href="https://www.google.com/search?q=60UA8550PSA&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n7PSR7udKdwAg4yDIMTKYq1j2SViA%3A1768249861570&ei=BVpladDGIvep1sQP3t6WwAE&ved=0ahUKEwiQ3f2G7IaSAxX3lJUCHV6vBRgQ4dUDCBE&uact=5&oq=60UA8550PSA&gs_lp=Egxnd3Mtd2l6LXNlcnAiCzYwVUE4NTUwUFNBMgQQIxgnMgoQABiABBgUGIcCMgUQABiABDIFEAAYgAQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBUi-EFAAWABwAHgBkAEAmAFvoAFvqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAJ0mAMAkgcDMC4xoAfYBLIHAzAuMbgHdMIHAzItMcgHA4AIAQ&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/cooktop.png" alt="Cooktop Indução" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Cooktop Indução</h3>
-                        <a href="https://www.google.com/search?q=Cooktop+4+Bocas+de+Indu%C3%A7%C3%A3o+Unicook+Preto+Electrolux&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n7g8-8Osp6hYzC_c-3iYrrU5HLofQ%3A1768251938045&ei=ImJlaYHEAvGz5OUPqMqSgA4&ved=0ahUKEwiB3Y_l84aSAxXxGbkGHSilBOAQ4dUDCBE&uact=5&oq=Cooktop+4+Bocas+de+Indu%C3%A7%C3%A3o+Unicook+Preto+Electrolux&gs_lp=Egxnd3Mtd2l6LXNlcnAiNUNvb2t0b3AgNCBCb2NhcyBkZSBJbmR1w6fDo28gVW5pY29vayBQcmV0byBFbGVjdHJvbHV4MgUQABiABDIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIFEAAY7wVIwwVQAFgAcAB4AZABAJgBgQGgAYEBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKFAZgDAJIHAzAuMaAHlgeyBwMwLjG4B4UBwgcDMC4xyAcCgAgB&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/tabuas.png" alt="Tábuas de Corte" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Tábuas de Corte</h3>
-                        <a href="https://www.google.com/search?q=t%C3%A1buas+de+corte+2+pe%C3%A7as&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n5L34vAKF1E398o1f2QxE-tRfcIVg%3A1768252632818&ei=2GRlaa7UMY7V1sQPpt_2sAM&ved=0ahUKEwiuoLWw9oaSAxWOqpUCHaavHTYQ4dUDCBE&uact=5&oq=t%C3%A1buas+de+corte+2+pe%C3%A7as&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXTDoWJ1YXMgZGUgY29ydGUgMiBwZcOnYXMyBRAhGKABMgUQIRifBUjyrgFQk5YBWPCtAXACeAGQAQCYAZIBoAHiBqoBAzIuNrgBA8gBAPgBAZgCCqACgwfCAgoQABhHGNYEGLADwgIFEAAYgATCAgoQABiABBiKBRhDwgIGEAAYFhgewgIIEAAYgAQYogSYAwCIBgGQBgiSBwMzLjegB7AZsgcDMS43uAf9BsIHBTEuNy4yyAcRgAgB&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/pote_hermetico.png" alt="Potes Herméticos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Potes Herméticos</h3>
-                        <a href="https://www.google.com/search?q=potes+herm%C3%A9ticos&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n5hFY8v56tejAeMrRwL5xsypxGmug%3A1768252660433&ei=9GRlaf6ZGofZ1sQP-NT0-Q8&oq=potes+herm&gs_lp=Egxnd3Mtd2l6LXNlcnAiCnBvdGVzIGhlcm0qAggAMggQABiABBixAzIKEAAYgAQYFBiHAjINEAAYgAQYigUYQxixAzIFEAAYgAQyChAAGIAEGBQYhwIyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyBRAAGIAESIkSUABYxQtwAHgBkAEAmAFsoAHiB6oBAzUuNbgBA8gBAPgBAZgCCqACiwjCAgQQIxgnwgIIEC4YgAQYsQPCAgsQABiABBixAxiDAcICDhAuGIMBGLEDGIAEGIoFwgIOEAAYgAQYigUYsQMYgwHCAgcQIxjJAhgnwgIREC4YgAQYsQMYgwEYxwEY0QPCAgsQLhiABBixAxiDAcICChAuGIAEGIoFGEPCAhMQLhiABBiKBRhDGMcBGK8BGI4FwgIOEC4YgAQYxwEYrwEYjgWYAwCSBwMzLjegB95YsgcDMy43uAeLCMIHBTAuNS41yAcfgAgB&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/jogo_utensilios_cozinha.png" alt="Jogo Utensílios Cozinha" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Jogo Utensílios Cozinha</h3>
-                        <a href="https://www.google.com/search?q=jogo+utens%C3%ADlios+de+cozinha&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n5PNdccts6HMkJfhQZsDp2xN6h_Pw%3A1768252786802&ei=cmVlafvdMLif1sQPvbnc6QU&oq=jogo+uten&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWpvZ28gdXRlbioCCAEyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMggQABiABBiiBDIIEAAYgAQYogQyBRAAGO8FSJIdUABY5xFwAXgBkAEAmAFhoAGhB6oBAjEwuAEDyAEA-AEBmAILoALKB8ICBBAjGCfCAgoQABiABBiKBRhDwgILEAAYgAQYsQMYgwHCAg4QABiABBiKBRixAxiDAcICCBAAGIAEGLEDwgIKECMY8AUYyQIYJ8ICBRAuGIAEwgIIEC4YsQMYgATCAgkQABiABBgKGAvCAgcQABiABBgKmAMAkgcDOC4zoAf-SbIHAzcuM7gHxwfCBwUwLjguM8gHH4AIAQ&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/jogo_talheres.png" alt="Jogo de Talheres" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Jogo de Talheres</h3>
-                        <a href="https://www.google.com/search?q=jogos+de+talheres&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n7_tcI6ZLYkrMKMT8M-F-xcsUyM4A%3A1768252988070&ei=PGZlabj8A_nP1sQP2OjP0As&oq=jogos+de+ta&gs_lp=Egxnd3Mtd2l6LXNlcnAiC2pvZ29zIGRlIHRhKgIIATIIEAAYgAQYsQMyBRAAGIAEMgoQABiABBgUGIcCMgUQABiABDIFEAAYgAQyCxAuGIAEGMcBGK8BMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEi2pQFQo4gBWJ-VAXACeAGQAQCYAW6gAaQIqgEDOC4zuAEDyAEA-AEBmAINoALaCKgCFMICDRAjGIAEGIoFGOoCGCfCAgcQIxjqAhgnwgIWEAAYgAQYigUYQxjnBhjqAhi0AtgBAcICBBAjGCfCAgoQABiABBiKBRhDwgILEAAYgAQYsQMYgwHCAg0QABiABBiKBRhDGLEDwgIQEAAYgAQYigUYQxixAxiDAcICDhAAGIAEGIoFGLEDGIMBmAMG8QUAoLqUPyfe1LoGBggBEAEYAZIHAzkuNKAH-EqyBwM3LjS4B88IwgcFMC44LjXIByqACAE&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/liquidificador.png" alt="Liquidificador" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Liquidificador</h3>
-                        <a href="https://www.google.com/search?q=liquidificador+electrolux&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n5S_Zz9IemAva1YOQcDTSQxA3FluA%3A1768253256199&ei=SGdlaYjcC9ja1sQP14Kw2Q8&oq=liquidificador+ele&gs_lp=Egxnd3Mtd2l6LXNlcnAiEmxpcXVpZGlmaWNhZG9yIGVsZSoCCAAyCBAAGIAEGLEDMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESLEMUNMCWK0GcAF4AZABAJgBZKABggOqAQMzLjG4AQPIAQD4AQGYAgWgApQDwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAg0QABiABBgUGIcCGLEDmAMAiAYBkAYKkgcDMy4yoAfKFrIHAzIuMrgHkAPCBwUwLjQuMcgHDYAIAQ&sclient=gws-wiz-serp" 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Adicione mais itens aqui seguindo o mesmo padrão -->
-                <!--
-                <div class="presente-item">
-                    <div class="presente-image">
-                        <img src="assets/presente_exemplo.jpg" alt="Nome do Presente" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="presente-placeholder" style="display:none;">SE</div>
-                    </div>
-                    <div class="presente-content">
-                        <h3 class="presente-title">Nome do Presente</h3>
-                        <a href="https://www.google.com/search?q=..." 
-                           class="btn btn-primary btn-small" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            Acessar link
-                        </a>
-                    </div>
-                </div>
-                -->
+            </div>
+
+            <div class="presentes-grid" id="presentesGrid">
+                <!-- Os presentes serão carregados dinamicamente via JavaScript -->
             </div>
         </div>
     </main>
@@ -229,8 +117,165 @@
 
     <script src="script.js"></script>
     <script>
+        let pixCodeGlobal = '00020126660014BR.GOV.BCB.PIX0111431773188670229Agradecemos demais sua ajuda!5204000053039865802BR5917ERIC MELO PEREIRA6004MAUA62250521lS73N0fDqHaow3D7KcYx8630459FF';
+        let todosPresentes = [];
+        let filtroAtual = 'all';
+        
+        // Carrega os presentes do JSON ou localStorage
+        async function loadPresentes() {
+            try {
+                let presentesData = [];
+                
+                // Tenta carregar do localStorage primeiro (para desenvolvimento/teste no mesmo domínio)
+                const saved = localStorage.getItem('presentesAdminData');
+                if (saved) {
+                    try {
+                        presentesData = JSON.parse(saved);
+                        todosPresentes = presentesData;
+                        filtrarPorPreco(filtroAtual);
+                        return; // Se conseguiu carregar do localStorage, não precisa buscar do JSON
+                    } catch (e) {
+                        console.warn('Erro ao ler localStorage, usando JSON:', e);
+                    }
+                }
+                
+                // Se não houver no localStorage, carrega do arquivo JSON
+                const response = await fetch('presentes-data.json?t=' + Date.now());
+                if (response.ok) {
+                    presentesData = await response.json();
+                } else {
+                    console.error('Erro ao carregar presentes-data.json');
+                    return;
+                }
+                
+                todosPresentes = presentesData;
+                filtrarPorPreco(filtroAtual);
+            } catch (error) {
+                console.error('Erro ao carregar presentes:', error);
+            }
+        }
+        
+        // Filtra presentes por faixa de preço
+        function filtrarPorPreco(faixa) {
+            filtroAtual = faixa;
+            
+            // Atualiza botões ativos
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-faixa') === faixa) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            let presentesFiltrados = [];
+            
+            if (faixa === 'all') {
+                presentesFiltrados = todosPresentes;
+            } else {
+                presentesFiltrados = todosPresentes.filter(presente => {
+                    const preco = presente.preco || 0;
+                    
+                    switch(faixa) {
+                        case '0-50':
+                            return preco >= 0 && preco <= 50;
+                        case '50-150':
+                            return preco > 50 && preco <= 150;
+                        case '150-400':
+                            return preco > 150 && preco <= 400;
+                        case '400-800':
+                            return preco > 400 && preco <= 800;
+                        case '800-1000':
+                            return preco > 800 && preco <= 1000;
+                        case '1000+':
+                            return preco > 1000;
+                        default:
+                            return true;
+                    }
+                });
+            }
+            
+            renderPresentes(presentesFiltrados);
+        }
+        
+        // Renderiza os presentes na tela
+        function renderPresentes(presentesData) {
+            const grid = document.getElementById('presentesGrid');
+            grid.innerHTML = '';
+            
+            if (presentesData.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: var(--color-text-light); padding: var(--spacing-xl);">Nenhum presente encontrado nesta faixa de preço.</p>';
+                return;
+            }
+            
+            presentesData.forEach((presente) => {
+                const card = createPresenteCard(presente);
+                grid.appendChild(card);
+            });
+        }
+        
+        // Cria um card de presente
+        function createPresenteCard(presente) {
+            const card = document.createElement('div');
+            card.className = 'presente-item';
+            if (presente.preco) {
+                card.setAttribute('data-preco', presente.preco);
+            }
+            
+            const tipo = presente.tipo || 'normal';
+            const isPix = tipo === 'pix';
+            
+            if (isPix && presente.pixCode) {
+                pixCodeGlobal = presente.pixCode;
+            }
+            
+            const temImagem = presente.imagem && presente.imagem.trim() !== '';
+            
+            let imageHTML = '';
+            if (temImagem) {
+                imageHTML = `<img src="${presente.imagem}" alt="${presente.titulo || ''}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="presente-placeholder" style="display:none;">SE</div>`;
+            } else {
+                imageHTML = `<div class="presente-placeholder" style="display:flex;">SE</div>`;
+            }
+            
+            let contentHTML = `
+                <div class="presente-image">
+                    ${imageHTML}
+                </div>
+                <div class="presente-content">
+                    <h3 class="presente-title">${presente.titulo || 'Presente'}</h3>
+            `;
+            
+            if (isPix) {
+                contentHTML += `
+                    <p class="pix-message" style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-light); margin-bottom: var(--spacing-md); line-height: 1.6;">
+                        ${presente.mensagem || 'Se preferir, você também pode contribuir com qualquer valor via PIX. Será uma ajuda muito especial para começarmos nossa vida a dois!'} <span style="color: #E91E63;">❤️</span>
+                    </p>
+                    <button class="btn btn-primary btn-small" onclick="copyPixCode()">
+                        Copiar código PIX
+                    </button>
+                    <p class="pix-copied-message" id="pixCopiedMessage" style="display: none; margin-top: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">
+                        Código copiado! 💛
+                    </p>
+                `;
+            } else if (presente.link) {
+                contentHTML += `
+                    <a href="${presente.link}" class="btn btn-primary btn-small" target="_blank" rel="noopener noreferrer">
+                        Acessar link
+                    </a>
+                `;
+            }
+            
+            contentHTML += `
+                </div>
+            `;
+            
+            card.innerHTML = contentHTML;
+            return card;
+        }
+        
         function copyPixCode() {
-            const pixCode = '00020126660014BR.GOV.BCB.PIX0111431773188670229Agradecemos demais sua ajuda!5204000053039865802BR5917ERIC MELO PEREIRA6004MAUA62250521lS73N0fDqHaow3D7KcYx8630459FF';
+            const pixCode = pixCodeGlobal;
             
             // Tenta usar a API moderna de clipboard
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -270,6 +315,13 @@
                 }, 3000);
             }
         }
+        
+        // Carrega os presentes quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPresentes();
+            // Define o botão "Todos" como ativo por padrão
+            document.querySelector('.filtro-btn[data-faixa="all"]').classList.add('active');
+        });
     </script>
 </body>
 </html>

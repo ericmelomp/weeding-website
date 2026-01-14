@@ -1,0 +1,243 @@
+[
+  {
+    "id": "pix",
+    "tipo": "pix",
+    "titulo": "PIX",
+    "imagem": "assets/qrcode.jpeg",
+    "link": "",
+    "mensagem": "Se preferir, você também pode contribuir com qualquer valor via PIX. Será uma ajuda muito especial para começarmos nossa vida a dois! ❤️",
+    "pixCode": "00020126660014BR.GOV.BCB.PIX0111431773188670229Agradecemos demais sua ajuda!5204000053039865802BR5917ERIC MELO PEREIRA6004MAUA62250521lS73N0fDqHaow3D7KcYx8630459FF"
+  },
+  {
+    "id": "geladeira",
+    "tipo": "normal",
+    "titulo": "Geladeira",
+    "imagem": "assets/geladeira.png",
+    "link": "https://www.google.com/search?q=Geladeira+Electrolux+Frost+Free+Inverter+590L+AutoSense+3+Portas+Cor+Inox+Look&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n6sIjNAz1iUBIZ8VCe1om1mq_Hegg%3A1768247159559&ei=d09laZnsIZ_C5OUPy5P1sAg&ved=0ahUKEwjZg8j-4YaSAxUfIbkGHctJHYYQ4dUDCBE&uact=5&oq=Geladeira+Electrolux+Frost+Free+Inverter+590L+AutoSense+3+Portas+Cor+Inox+Look&gs_lp=Egxnd3Mtd2l6LXNlcnAiTkdlbGFkZWlyYSBFbGVjdHJvbHV4IEZyb3N0IEZyZWUgSW52ZXJ0ZXIgNTkwTCBBdXRvU2Vuc2UgMyBQb3J0YXMgQ29yIElub3ggTG9vazIFEAAYgAQyBRAAGIAEMgUQABiABEj4BVAAWABwAHgBkAEAmAFYoAFYqgEBMbgBA8gBAPgBAvgBAZgCAaACW5gDAJIHATGgB70DsgcBMbgHW8IHAzAuMcgHAoAIAQ&sclient=gws-wiz-serp",
+    "preco": 6300
+  },
+  {
+    "id": "lava-seca",
+    "tipo": "normal",
+    "titulo": "Lava e Seca",
+    "imagem": "assets/lava_seca.png",
+    "link": "https://www.google.com/search?q=WD11A4453BX&rlz=1C1UEAD_enBR1145BR1145&biw=1920&bih=911&aic=0&sca_esv=e9a6b6505834f0c4&sxsrf=ANbL-n5w47fWPqnMa0atMO8GUq6rYbd9eA%3A1768249412938&ei=RFhlabL8ONTX1sQP_f7I0QM&ved=0ahUKEwiyroex6oaSAxXUq5UCHX0_MjoQ4dUDCBE&uact=5&oq=WD11A4453BX&gs_lp=Egxnd3Mtd2l6LXNlcnAiC1dEMTFBNDQ1M0JYMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEiWBVAAWABwAHgBkAEAmAFsoAFsqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAJwmAMAkgcDMC4xoAevBLIHAzAuMbgHcMIHAzAuMcgHAoAIAQ&sclient=gws-wiz-serp",
+    "preco": 3600
+  },
+  {
+    "id": "televisao",
+    "tipo": "normal",
+    "titulo": "Televisão 60'",
+    "imagem": "assets/televisao.png",
+    "link": "https://www.google.com/search?q=60UA8550PSA&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n7PSR7udKdwAg4yDIMTKYq1j2SViA%3A1768249861570&ei=BVpladDGIvep1sQP3t6WwAE&ved=0ahUKEwiQ3f2G7IaSAxX3lJUCHV6vBRgQ4dUDCBE&uact=5&oq=60UA8550PSA&gs_lp=Egxnd3Mtd2l6LXNlcnAiCzYwVUE4NTUwUFNBMgQQIxgnMgoQABiABBgUGIcCMgUQABiABDIFEAAYgAQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBUi-EFAAWABwAHgBkAEAmAFvoAFvqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAJ0mAMAkgcDMC4xoAfYBLIHAzAuMbgHdMIHAzItMcgHA4AIAQ&sclient=gws-wiz-serp",
+    "preco": 2800
+  },
+  {
+    "id": "cooktop",
+    "tipo": "normal",
+    "titulo": "Cooktop Indução",
+    "imagem": "assets/cooktop.png",
+    "link": "https://www.google.com/search?q=Cooktop+4+Bocas+de+Indu%C3%A7%C3%A3o+Unicook+Preto+Electrolux&sca_esv=e9a6b6505834f0c4&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n7g8-8Osp6hYzC_c-3iYrrU5HLofQ%3A1768251938045&ei=ImJlaYHEAvGz5OUPqMqSgA4&ved=0ahUKEwiB3Y_l84aSAxXxGbkGHSilBOAQ4dUDCBE&uact=5&oq=Cooktop+4+Bocas+de+Indu%C3%A7%C3%A3o+Unicook+Preto+Electrolux&gs_lp=Egxnd3Mtd2l6LXNlcnAiNUNvb2t0b3AgNCBCb2NhcyBkZSBJbmR1w6fDo28gVW5pY29vayBQcmV0byBFbGVjdHJvbHV4MgUQABiABDIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIFEAAY7wVIwwVQAFgAcAB4AZABAJgBgQGgAYEBqgEDMC4xuAEDyAEA-AEC-AEBmAIBoAKFAZgDAJIHAzAuMaAHlgeyBwMwLjG4B4UBwgcDMC4xyAcCgAgB&sclient=gws-wiz-serp",
+    "preco": 2000
+  },
+  {
+    "id": "tabuas",
+    "tipo": "normal",
+    "titulo": "Tábuas de Corte",
+    "imagem": "assets/tabuas.png",
+    "link": "https://www.google.com/search?q=t%C3%A1buas+de+corte+2+pe%C3%A7as&sca_esv=9b5c493ee8186f6d&rlz=1C1UEAD_enBR1145BR1145&sxsrf=ANbL-n5L34vAKF1E398o1f2QxE-tRfcIVg%3A1768252632818&ei=2GRlaa7UMY7V1sQPpt_2sAM&ved=0ahUKEwiuoLWw9oaSAxWOqpUCHaavHTYQ4dUDCBE&uact=5&oq=t%C3%A1buas+de+corte+2+pe%C3%A7as&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXTDoWJ1YXMgZGUgY29ydGUgMiBwZcOnYXMyBRAhGKABMgUQIRifBUjyrgFQk5YBWPCtAXACeAGQAQCYAZIBoAHiBqoBAzIuNrgBA8gBAPgBAZgCCqACgwfCAgoQABhHGNYEGLADwgIFEAAYgATCAgoQABiABBiKBRhDwgIGEAAYFhgewgIIEAAYgAQYogSYAwCIBgGQBgiSBwMzLjegB7AZsgcDMS43uAf9BsIHBTEuNy4yyAcRgAgB&sclient=gws-wiz-serp",
+    "preco": 80
+  },
+  {
+    "id": "potes-hermeticos",
+    "tipo": "normal",
+    "titulo": "Potes Herméticos",
+    "imagem": "assets/pote_hermetico.png",
+    "link": "https://www.amazon.com.br/Kit-Potes-Herm%C3%A9ticos-Pl%C3%A1stico-Electrolux/dp/B09XJL4B9H/ref=asc_df_B09XJL4B9H?mcid=e89f2780ee773943b4c20f0a7d7d7fed&tag=googleshopp00-20&linkCode=df0&hvadid=709964506304&hvpos=&hvnetw=g&hvrand=8251177462522202566&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-1662902312395&language=pt_BR&gad_source=1&th=1",
+    "preco": 80
+  },
+  {
+    "id": "jogo-utensilios",
+    "tipo": "normal",
+    "titulo": "Jogo Utensílios Cozinha",
+    "imagem": "assets/jogo_utensilios_cozinha.png",
+    "link": "https://www.amazon.com.br/Conjunto-Utens%C3%ADlios-Cozinha-Silicone-Inox/dp/B0BVSZRH8R/ref=asc_df_B0BVSZRH8R?mcid=12a99a5344033dc3bd239495d7d2f685&tag=googleshopp00-20&linkCode=df0&hvadid=709964506283&hvpos=&hvnetw=g&hvrand=10747589130299457343&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-1980933038551&language=pt_BR&gad_source=1&th=1",
+    "preco": 120
+  },
+  {
+    "id": "jogo-talheres",
+    "tipo": "normal",
+    "titulo": "Jogo de Talheres",
+    "imagem": "assets/jogo_talheres.png",
+    "link": "https://www.amazon.com.br/Faqueiro-Lyon-Brinox-5101-118/dp/B01N7KR864/ref=asc_df_B01N7KR864?mcid=61e4de3c1fae3bcab295149005676b24&tag=googleshopp00-20&linkCode=df0&hvadid=709959378848&hvpos=&hvnetw=g&hvrand=10658109288406785219&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-854643532000&psc=1&language=pt_BR&gad_source=1",
+    "preco": 200
+  },
+  {
+    "id": "liquidificador",
+    "tipo": "normal",
+    "titulo": "Liquidificador",
+    "imagem": "assets/liquidificador.png",
+    "link": "https://www.amazon.com.br/Liquidificador-Electrolux-Tecnologia-Experience-EBS30/dp/B09SVR1XR5/ref=asc_df_B09SVR1XR5?mcid=4fdd4106c11a3f4584525a64e8bbd861&tag=googleshopp00-20&linkCode=df0&hvadid=709870389015&hvpos=&hvnetw=g&hvrand=6845843584262921021&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-1652468036155&psc=1&language=pt_BR&gad_source=1",
+    "preco": 250
+  },
+  {
+    "id": "presente-1768417839788",
+    "tipo": "normal",
+    "titulo": "Kit Ferramentas",
+    "imagem": "assets/ferramentas.png",
+    "link": "https://www.amazon.com.br/Maleta-Ferramentas-Manuais-Completo-organizadora/dp/B09M7JFCV2/ref=asc_df_B09M7JFCV2?mcid=a861da02a3a13ef68059d1a84769eac0&tag=googleshopp00-20&linkCode=df0&hvadid=709857067836&hvpos=&hvnetw=g&hvrand=1206778688258493325&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-1643037676047&language=pt_BR&gad_source=1&th=1",
+    "preco": 180
+  },
+  {
+    "id": "presente-1768418545060",
+    "tipo": "normal",
+    "titulo": "Panos de Prato",
+    "imagem": "assets/panos.png",
+    "link": "https://www.amazon.com.br/Premium-Atoalhado-Jacquard-45x70cm-Algod%C3%A3o/dp/B0FBMKC2M5?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=AMXB0UB0ZTLUW&th=1",
+    "preco": 50
+  },
+  {
+    "id": "presente-1768419204016",
+    "tipo": "normal",
+    "titulo": "Porta Copos",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Porta-Copos-Emborrachado-Unidades-Preto/dp/B095QRKQ5G/ref=asc_df_B095QRKQ5G?mcid=fc4184fb613534b6873c8a5ad4aeee67&tag=googleshopp00-20&linkCode=df0&hvadid=709968341176&hvpos=&hvnetw=g&hvrand=14349207454658772872&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1833871771392&psc=1&language=pt_BR&gad_source=1",
+    "preco": 20
+  },
+  {
+    "id": "presente-1768420515668",
+    "tipo": "normal",
+    "titulo": "Abridor de Garrafas",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/El%C3%A9trico-Autom%C3%A1tico-Presentes-Comemora%C3%A7%C3%B5es-Rom%C3%A2nticos/dp/B0F48KH5F2/ref=asc_df_B0F48KH5F2?mcid=6d75ba3328993406898e56ffcbdf101d&tag=googleshopp00-20&linkCode=df0&hvadid=709876289439&hvpos=&hvnetw=g&hvrand=9134996491403025216&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2420896283898&psc=1&language=pt_BR&gad_source=1",
+    "preco": 60
+  },
+  {
+    "id": "presente-1768420531449",
+    "tipo": "normal",
+    "titulo": "Bowls (Conjunto)",
+    "imagem": "",
+    "link": "https://www.mercadolivre.com.br/6-tigelas-bowl-1100ml-preto-resistente-hotel-restaurante/up/MLBU3682249905?pdp_filters=item_id:MLB6074578346&matt_tool=92013967&matt_internal_campaign_id=&matt_word=&matt_source=google&matt_campaign_id=22603531565&matt_ad_group_id=184689824807&matt_match_type=&matt_network=g&matt_device=c&matt_creative=758138322203&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=609368795&matt_product_id=MLB6074578346&matt_product_partition_id=2425720730334&matt_target_id=aud-1966873223882:pla-2425720730334&cq_src=google_ads&cq_cmp=22603531565&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22603531565&gbraid=0AAAAAD93qcChj94M1IqHKR164Brl0M-cG&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUEg9O5QGCVOxXHFSBKDYZduYa3YSkzn_s6fPIIaDU8Yn2_WMYGMLehoCrP4QAvD_BwE",
+    "preco": 65
+  },
+  {
+    "id": "presente-1768420609798",
+    "tipo": "normal",
+    "titulo": "Assadeiras",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Marinex-Conjunto-Assadeiras-Retangulares-Incolor/dp/B0016LHBHM/ref=asc_df_B0016LHBHM?mcid=4533aba616703ae5931dcab573c3b92d&tag=googleshopp00-20&linkCode=df0&hvadid=709964506256&hvpos=&hvnetw=g&hvrand=5957780488538886844&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-918825582675&psc=1&language=pt_BR&gad_source=1",
+    "preco": 65
+  },
+  {
+    "id": "presente-1768422044150",
+    "tipo": "normal",
+    "titulo": "Jogo de Toalhas",
+    "imagem": "",
+    "link": "https://www.mercadolivre.com.br/kit-jogo-toalha-rosto-e-banho-4-pcs-contendo-2-rosto-2-banho-cor-azul-petroleo-liso/p/MLB53456256?pdp_filters=item_id:MLB4289773401&matt_tool=97252265&matt_internal_campaign_id=353552523&matt_word=&matt_source=google&matt_campaign_id=23048606139&matt_ad_group_id=191505175390&matt_match_type=&matt_network=g&matt_device=c&matt_creative=781162847981&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=5704251821&matt_product_id=MLB4289773401&matt_product_partition_id=2448248556418&matt_target_id=aud-1966489759667:pla-2448248556418&cq_src=google_ads&cq_cmp=23048606139&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=23048606139&gbraid=0AAAAAD93qcAVFoGyuHZmyXpn0rlakwgkL&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUIoHgmLCSA7RCqmHBcbRclEGIVi65X1Jcs4sFedJ-y8Cz0jQzEX3bhoCyjMQAvD_BwE",
+    "preco": 75
+  },
+  {
+    "id": "presente-1768422114162",
+    "tipo": "normal",
+    "titulo": "Medidor Culinário",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Medidor-Culin%C3%A1rio-Colher-X%C3%ADcara-Cozinha/dp/B0DVHRKKQB/ref=asc_df_B0DVHRKKQB?mcid=dd5ca3a997f93953af0474a573a3e388&tag=googleshopp00-20&linkCode=df0&hvadid=709876289439&hvpos=&hvnetw=g&hvrand=4409555654144263936&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2404045236196&psc=1&language=pt_BR&gad_source=1",
+    "preco": 40
+  },
+  {
+    "id": "presente-1768422257943",
+    "tipo": "normal",
+    "titulo": "Sanduicheira",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Sanduicheira-El%C3%A9trica-Cadence-Click-220V/dp/B0CDJ5DQ7M/ref=asc_df_B0CDJ5DQ7M?mcid=0b8a0f8c5d883de18ff25849c88809cc&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=18193241657291015034&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2205066717738&psc=1&language=pt_BR&gad_source=1",
+    "preco": 100
+  },
+  {
+    "id": "presente-1768422318791",
+    "tipo": "normal",
+    "titulo": "Chaleira Elétrica",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Chaleira-El%C3%A9trica-Lumini-Cadence-Branca/dp/B09NCGP6YZ/ref=asc_df_B09NCGP6YZ?mcid=8da089f0cfaa3d6e9c10a64b42435ad3&tag=googleshopp00-20&linkCode=df0&hvadid=709964506256&hvpos=&hvnetw=g&hvrand=6888871003601144833&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1622072336073&language=pt_BR&gad_source=1&th=1",
+    "preco": 110
+  },
+  {
+    "id": "presente-1768422353520",
+    "tipo": "normal",
+    "titulo": "Kit Panelas (10 pçs)",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Panelas-Tramontina-Antiaderente-Turim-Vermelho/dp/B0BBS9KDHT/ref=asc_df_B0BBS9KDHT?mcid=e625a371412d3ee49e922f6df81a7438&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=2659095343042136134&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1747827860105&psc=1&language=pt_BR&gad_source=1",
+    "preco": 350
+  },
+  {
+    "id": "presente-1768422584316",
+    "tipo": "normal",
+    "titulo": "Kit Panelas (5 pçs)",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Panelas-Antiaderente-Alum%C3%ADnio-Premium-Esp%C3%A1tula/dp/B0DFMZ92ZW/ref=asc_df_B0DFMZ92ZW?mcid=acc1da9bda433f519d2d7c2e8b3f2d9f&tag=googleshopp00-20&linkCode=df0&hvadid=709989056369&hvpos=&hvnetw=g&hvrand=11821897928313665384&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2369508249064&language=pt_BR&gad_source=1&th=1",
+    "preco": 150
+  },
+  {
+    "id": "presente-1768422596814",
+    "tipo": "normal",
+    "titulo": "Aspirador de Pó",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Aspirador-Vertical-1300W-STK14-220V/dp/B094XCF5RZ/ref=asc_df_B094XCF5RZ?mcid=92c091db876e339ba291f3166a844e20&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=7848323978517004261&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1388115964777&language=pt_BR&gad_source=1&th=1",
+    "preco": 160
+  },
+  {
+    "id": "presente-1768422668041",
+    "tipo": "normal",
+    "titulo": "Air Fryer",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Fritadeira-%C3%93leo-Oster-1500W-OFRT970/dp/B0BSNW9X1Z/ref=asc_df_B0BSNW9X1Z?mcid=dc8c76c066e539308ed539f5730e4e70&tag=googleshopp00-20&linkCode=df0&hvadid=709886750320&hvpos=&hvnetw=g&hvrand=6115749896992822940&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2246055013119&psc=1&language=pt_BR&gad_source=1",
+    "preco": 330
+  },
+  {
+    "id": "presente-1768422727597",
+    "tipo": "normal",
+    "titulo": "Mixer",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Electrolux-4011AHBR407-Mixer-EIB10/dp/B09B2M8N4T/ref=asc_df_B09B2M8N4T?mcid=25dceb4e72ac342a988f7ad76d8c2994&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=16584830333288390240&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1416833357664&psc=1&language=pt_BR&gad_source=1",
+    "preco": 190
+  },
+  {
+    "id": "presente-1768422767687",
+    "tipo": "normal",
+    "titulo": "Micro-ondas",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Micro-Ondas-Electrolux-Prata-Painel-Integrado/dp/B076XCSJ4Q/ref=asc_df_B076XCSJ4Q?mcid=a23f81dc68a535a9b1ff15205d05db4f&tag=googleshopp00-20&linkCode=df0&hvadid=709864975911&hvpos=&hvnetw=g&hvrand=15317074800854869651&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-875186652437&language=pt_BR&gad_source=1&th=1",
+    "preco": 800
+  },
+  {
+    "id": "presente-1768422837758",
+    "tipo": "normal",
+    "titulo": "Robô Aspirador",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Electrolux-Experience-Autonomous-Technology-ERB30/dp/B09SVT5X8N/ref=asc_df_B09SVT5X8N?mcid=5132f77bdb8038d68f0a82275b13fb86&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=9113805696305224779&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2202491347351&psc=1&language=pt_BR&gad_source=1",
+    "preco": 800
+  },
+  {
+    "id": "presente-1768422912144",
+    "tipo": "normal",
+    "titulo": "Purificador de Água",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Purificador-Consul-Eletr%C3%B4nico-Refrigera%C3%A7%C3%A3o-CPB33AF/dp/B09SQB95LJ/ref=asc_df_B09SQB95LJ?mcid=9f59027e635a35bdaf0e960e7efac2dd&tag=googleshopp00-20&linkCode=df0&hvadid=709870389015&hvpos=&hvnetw=g&hvrand=9903725803242412776&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1639004998263&psc=1&language=pt_BR&gad_source=1",
+    "preco": 800
+  },
+  {
+    "id": "presente-1768423024380",
+    "tipo": "normal",
+    "titulo": "Alexa",
+    "imagem": "",
+    "link": "https://www.kabum.com.br/produto/460471/echo-dot-5-geracao-amazon-com-alexa-smart-speaker-preto-b09b8vgcr8?gclsrc=aw.ds&&utm_id=22429584361&gad_source=1&gad_campaignid=22429584361&gbraid=0AAAAADx-HyEWrWtGXaSni0uKgAKKlXAJC&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUO5VCItmDNo_svl7PDlDJGthP-LGrGiLcGKxL5OuUNrYWZss4_EfzxoCcSAQAvD_BwE",
+    "preco": 400
+  },
+  {
+    "id": "presente-1768423031668",
+    "tipo": "normal",
+    "titulo": "Ventilador de Mesa",
+    "imagem": "",
+    "link": "https://www.amazon.com.br/Ventilador-Arno-VE71-Velocidades-Silencioso/dp/B0F8XYY2PL/ref=asc_df_B0F8XYY2PL?mcid=e2fb7bd73e2d30c1bb3114f7331d5e72&tag=googleshopp00-20&linkCode=df0&hvadid=710048990096&hvpos=&hvnetw=g&hvrand=464939668376337531&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2435787558942&language=pt_BR&gad_source=1&th=1",
+    "preco": 250
+  }
+]

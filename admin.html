@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin - Gerenciar Lista de Presentes - Casamento de Suzana & Eric">
+    <title>Admin - Lista de Presentes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .admin-page {
+            padding: 120px 0 var(--spacing-xl);
+            min-height: calc(100vh - 200px);
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .admin-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .admin-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .admin-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .btn-danger {
+            background: #d32f2f;
+            color: white;
+            border: 1px solid #d32f2f;
+        }
+
+        .btn-danger:hover {
+            background: transparent;
+            color: #d32f2f;
+        }
+
+        .btn-success {
+            background: #2e7d32;
+            color: white;
+            border: 1px solid #2e7d32;
+        }
+
+        .btn-success:hover {
+            background: transparent;
+            color: #2e7d32;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .admin-presente-card {
+            background: #fff;
+            border: 2px solid var(--color-gold-border);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            transition: var(--transition);
+        }
+
+        .admin-presente-card:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 4px 12px rgba(200, 164, 93, 0.15);
+        }
+
+        .admin-presente-card.editing {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px var(--color-gold-light);
+        }
+
+        .admin-presente-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: var(--color-bg);
+            border: 1px solid var(--color-gold-border);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .admin-form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .admin-form-label {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .admin-form-input {
+            width: 100%;
+            padding: 0.6rem;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--color-text);
+            background: var(--color-bg);
+            border: 1px solid var(--color-gold-border);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .admin-form-input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 2px var(--color-gold-light);
+        }
+
+        .admin-form-textarea {
+            width: 100%;
+            padding: 0.6rem;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--color-text);
+            background: var(--color-bg);
+            border: 1px solid var(--color-gold-border);
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 80px;
+            transition: var(--transition);
+        }
+
+        .admin-form-textarea:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 2px var(--color-gold-light);
+        }
+
+        .admin-card-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .admin-card-actions button {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .add-presente-btn {
+            margin: var(--spacing-xl) auto 0;
+            display: block;
+            max-width: 400px;
+        }
+
+        .message {
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            font-family: var(--font-sans);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+
+        .message-error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .preview-mode {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-placeholder">SE</div>
+            </a>
+            <nav class="nav">
+                <a href="/presentes.html" class="nav-link">Ver Lista</a>
+                <a href="/" class="nav-link">Voltar para o site</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-page">
+        <div class="container">
+            <div class="admin-header">
+                <h1 class="admin-title">Gerenciar Lista de Presentes</h1>
+                <div class="section-divider"></div>
+                <p class="admin-subtitle">Edite, adicione ou remova presentes da lista</p>
+                
+                <div id="messageContainer"></div>
+                
+                <div class="admin-actions">
+                    <button class="btn btn-primary" onclick="saveData()">💾 Salvar Alterações</button>
+                    <button class="btn btn-secondary" onclick="exportJSON()">📋 Copiar JSON</button>
+                    <button class="btn btn-outline" onclick="loadData()">🔄 Recarregar</button>
+                    <button class="btn btn-danger" onclick="clearAllData()">🗑️ Limpar Tudo</button>
+                </div>
+            </div>
+
+            <div id="presentesContainer" class="admin-grid">
+                <!-- Os presentes serão inseridos aqui via JavaScript -->
+            </div>
+
+            <button class="btn btn-primary add-presente-btn" onclick="addNewPresente()">
+                ➕ Adicionar Novo Presente
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/logobrasao.png" alt="Suzana & Eric" class="footer-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="footer-logo">SE</div>
+                <p class="footer-text">Suzana & Eric — 10 de abril de 2027</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let presentesData = [];
+        let nextId = 1;
+
+        // Carrega dados do JSON ou localStorage
+        async function loadData() {
+            try {
+                // Tenta carregar do localStorage primeiro
+                const saved = localStorage.getItem('presentesAdminData');
+                if (saved) {
+                    presentesData = JSON.parse(saved);
+                    renderPresentes();
+                    showMessage('Dados carregados do armazenamento local', 'success');
+                    return;
+                }
+
+                // Se não houver no localStorage, carrega do JSON
+                const response = await fetch('presentes-data.json');
+                if (response.ok) {
+                    presentesData = await response.json();
+                    // Garante que todos têm IDs
+                    presentesData.forEach((p, index) => {
+                        if (!p.id) {
+                            p.id = p.titulo.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
+                        }
+                    });
+                    nextId = Math.max(...presentesData.map(p => parseInt(p.id.split('-').pop()) || 0)) + 1;
+                    renderPresentes();
+                    showMessage('Dados carregados do arquivo JSON', 'success');
+                } else {
+                    showMessage('Erro ao carregar dados. Crie um presente para começar.', 'error');
+                    presentesData = [];
+                    renderPresentes();
+                }
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                showMessage('Erro ao carregar dados. Verifique o console.', 'error');
+                presentesData = [];
+                renderPresentes();
+            }
+        }
+
+        // Renderiza os presentes na tela
+        function renderPresentes() {
+            const container = document.getElementById('presentesContainer');
+            container.innerHTML = '';
+
+            presentesData.forEach((presente, index) => {
+                const card = createPresenteCard(presente, index);
+                container.appendChild(card);
+            });
+
+            if (presentesData.length === 0) {
+                container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: var(--color-text-light);">Nenhum presente cadastrado. Clique em "Adicionar Novo Presente" para começar.</p>';
+            }
+        }
+
+        // Cria um card de presente editável
+        function createPresenteCard(presente, index) {
+            const card = document.createElement('div');
+            card.className = 'admin-presente-card';
+            card.dataset.index = index;
+
+            const tipo = presente.tipo || 'normal';
+            
+            card.innerHTML = `
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Imagem (URL ou caminho)</label>
+                    <input type="text" class="admin-form-input" value="${escapeHtml(presente.imagem || '')}" 
+                           onchange="updatePresente(${index}, 'imagem', this.value)"
+                           placeholder="assets/imagem.png">
+                    <img src="${presente.imagem || ''}" class="admin-presente-image" 
+                         onerror="this.style.display='none';"
+                         onload="this.style.display='block';"
+                         alt="Preview" style="display: ${presente.imagem ? 'block' : 'none'};">
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Título *</label>
+                    <input type="text" class="admin-form-input" value="${escapeHtml(presente.titulo || '')}" 
+                           onchange="updatePresente(${index}, 'titulo', this.value)"
+                           placeholder="Nome do presente" required>
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Link</label>
+                    <input type="url" class="admin-form-input" value="${escapeHtml(presente.link || '')}" 
+                           onchange="updatePresente(${index}, 'link', this.value)"
+                           placeholder="https://...">
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Preço (R$) - Para classificação interna</label>
+                    <input type="number" class="admin-form-input" value="${presente.preco || ''}" 
+                           onchange="updatePresente(${index}, 'preco', parseFloat(this.value) || null)"
+                           placeholder="Ex: 250.50" step="0.01" min="0">
+                    <small style="color: var(--color-text-light); font-size: 0.85rem;">Este valor não será exibido publicamente, apenas para filtragem</small>
+                </div>
+
+                ${tipo === 'pix' ? `
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Código PIX</label>
+                    <textarea class="admin-form-textarea" 
+                              onchange="updatePresente(${index}, 'pixCode', this.value)"
+                              placeholder="Código PIX">${escapeHtml(presente.pixCode || '')}</textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Mensagem PIX</label>
+                    <textarea class="admin-form-textarea" 
+                              onchange="updatePresente(${index}, 'mensagem', this.value)"
+                              placeholder="Mensagem">${escapeHtml(presente.mensagem || '')}</textarea>
+                </div>
+                ` : ''}
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Tipo</label>
+                    <select class="admin-form-input" onchange="updatePresente(${index}, 'tipo', this.value); renderPresentes();">
+                        <option value="normal" ${tipo === 'normal' ? 'selected' : ''}>Normal</option>
+                        <option value="pix" ${tipo === 'pix' ? 'selected' : ''}>PIX</option>
+                    </select>
+                </div>
+
+                <div class="admin-card-actions">
+                    <button class="btn btn-danger btn-small" onclick="removePresente(${index})">🗑️ Remover</button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Atualiza um campo de um presente
+        function updatePresente(index, field, value) {
+            if (presentesData[index]) {
+                presentesData[index][field] = value;
+                
+                // Atualiza a preview da imagem
+                if (field === 'imagem') {
+                    const card = document.querySelector(`[data-index="${index}"]`);
+                    if (card) {
+                        const img = card.querySelector('.admin-presente-image');
+                        if (img) {
+                            img.src = value;
+                            img.style.display = value ? 'block' : 'none';
+                        }
+                    }
+                }
+            }
+        }
+
+        // Adiciona um novo presente
+        function addNewPresente() {
+            const newPresente = {
+                id: 'presente-' + Date.now(),
+                tipo: 'normal',
+                titulo: 'Novo Presente',
+                imagem: '',
+                link: ''
+            };
+            
+            presentesData.push(newPresente);
+            renderPresentes();
+            
+            // Scroll para o novo card
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.admin-presente-card');
+                if (cards.length > 0) {
+                    cards[cards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        }
+
+        // Remove um presente
+        function removePresente(index) {
+            if (confirm('Tem certeza que deseja remover este presente?')) {
+                presentesData.splice(index, 1);
+                renderPresentes();
+                showMessage('Presente removido', 'success');
+            }
+        }
+
+        // Salva dados no localStorage
+        function saveData() {
+            try {
+                // Validação básica
+                const invalid = presentesData.find(p => !p.titulo || !p.titulo.trim());
+                if (invalid) {
+                    showMessage('Erro: Todos os presentes devem ter um título', 'error');
+                    return;
+                }
+
+                localStorage.setItem('presentesAdminData', JSON.stringify(presentesData, null, 2));
+                showMessage('Alterações salvas com sucesso!', 'success');
+            } catch (error) {
+                console.error('Erro ao salvar:', error);
+                showMessage('Erro ao salvar. Verifique o console.', 'error');
+            }
+        }
+
+        // Copia JSON para clipboard
+        async function exportJSON() {
+            try {
+                const dataStr = JSON.stringify(presentesData, null, 2);
+                
+                // Tenta usar a API moderna de clipboard
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(dataStr);
+                    showMessage('JSON copiado para a área de transferência!', 'success');
+                } else {
+                    // Fallback para navegadores mais antigos
+                    fallbackCopyToClipboard(dataStr);
+                }
+            } catch (error) {
+                console.error('Erro ao copiar:', error);
+                // Fallback se a API falhar
+                try {
+                    fallbackCopyToClipboard(JSON.stringify(presentesData, null, 2));
+                } catch (fallbackError) {
+                    showMessage('Erro ao copiar. Verifique o console.', 'error');
+                }
+            }
+        }
+        
+        // Fallback para copiar texto (navegadores mais antigos)
+        function fallbackCopyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                if (successful) {
+                    showMessage('JSON copiado para a área de transferência!', 'success');
+                } else {
+                    showMessage('Erro ao copiar. Tente selecionar e copiar manualmente.', 'error');
+                }
+            } catch (err) {
+                document.body.removeChild(textArea);
+                showMessage('Erro ao copiar. Tente selecionar e copiar manualmente.', 'error');
+            }
+        }
+
+        // Limpa todos os dados
+        function clearAllData() {
+            if (confirm('Tem CERTEZA que deseja limpar TODOS os dados? Esta ação não pode ser desfeita!')) {
+                presentesData = [];
+                localStorage.removeItem('presentesAdminData');
+                renderPresentes();
+                showMessage('Todos os dados foram limpos', 'success');
+            }
+        }
+
+        // Mostra mensagem de feedback
+        function showMessage(text, type = 'success') {
+            const container = document.getElementById('messageContainer');
+            const message = document.createElement('div');
+            message.className = `message message-${type}`;
+            message.textContent = text;
+            container.innerHTML = '';
+            container.appendChild(message);
+            
+            setTimeout(() => {
+                message.style.opacity = '0';
+                message.style.transition = 'opacity 0.3s';
+                setTimeout(() => {
+                    container.innerHTML = '';
+                }, 300);
+            }, 3000);
+        }
+
+        // Escapa HTML para prevenir XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Inicializa quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
+    </script>
+</body>
+</html>

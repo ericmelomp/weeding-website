@@ -13,8 +13,10 @@ COPY nginx.conf /etc/nginx/conf.d/
 COPY index.html /usr/share/nginx/html/
 COPY rsvp.html /usr/share/nginx/html/
 COPY presentes.html /usr/share/nginx/html/
+COPY admin.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
+COPY presentes-data.json /usr/share/nginx/html/
 
 # Copia assets (imagens) para o container
 # Garante que o diretório existe primeiro
