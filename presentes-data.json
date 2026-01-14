@@ -83,7 +83,7 @@
   {
     "id": "presente-1768417839788",
     "tipo": "normal",
-    "titulo": "Kit Ferramentas",
+    "titulo": "assets/Kit Ferramentas",
     "imagem": "assets/ferramentas.png",
     "link": "https://www.amazon.com.br/Maleta-Ferramentas-Manuais-Completo-organizadora/dp/B09M7JFCV2/ref=asc_df_B09M7JFCV2?mcid=a861da02a3a13ef68059d1a84769eac0&tag=googleshopp00-20&linkCode=df0&hvadid=709857067836&hvpos=&hvnetw=g&hvrand=1206778688258493325&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196721&hvtargid=pla-1643037676047&language=pt_BR&gad_source=1&th=1",
     "preco": 180
@@ -92,7 +92,7 @@
     "id": "presente-1768418545060",
     "tipo": "normal",
     "titulo": "Panos de Prato",
-    "imagem": "assets/panos.png",
+    "imagem": "assets/pano_prato.png",
     "link": "https://www.amazon.com.br/Premium-Atoalhado-Jacquard-45x70cm-Algod%C3%A3o/dp/B0FBMKC2M5?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=AMXB0UB0ZTLUW&th=1",
     "preco": 50
   },
@@ -100,7 +100,7 @@
     "id": "presente-1768419204016",
     "tipo": "normal",
     "titulo": "Porta Copos",
-    "imagem": "",
+    "imagem": "assets/porta_copos.png",
     "link": "https://www.amazon.com.br/Porta-Copos-Emborrachado-Unidades-Preto/dp/B095QRKQ5G/ref=asc_df_B095QRKQ5G?mcid=fc4184fb613534b6873c8a5ad4aeee67&tag=googleshopp00-20&linkCode=df0&hvadid=709968341176&hvpos=&hvnetw=g&hvrand=14349207454658772872&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1833871771392&psc=1&language=pt_BR&gad_source=1",
     "preco": 20
   },
@@ -108,7 +108,7 @@
     "id": "presente-1768420515668",
     "tipo": "normal",
     "titulo": "Abridor de Garrafas",
-    "imagem": "",
+    "imagem": "assets/abridor_garrafa.png",
     "link": "https://www.amazon.com.br/El%C3%A9trico-Autom%C3%A1tico-Presentes-Comemora%C3%A7%C3%B5es-Rom%C3%A2nticos/dp/B0F48KH5F2/ref=asc_df_B0F48KH5F2?mcid=6d75ba3328993406898e56ffcbdf101d&tag=googleshopp00-20&linkCode=df0&hvadid=709876289439&hvpos=&hvnetw=g&hvrand=9134996491403025216&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2420896283898&psc=1&language=pt_BR&gad_source=1",
     "preco": 60
   },
@@ -116,7 +116,7 @@
     "id": "presente-1768420531449",
     "tipo": "normal",
     "titulo": "Bowls (Conjunto)",
-    "imagem": "",
+    "imagem": "assets/bowls.png",
     "link": "https://www.mercadolivre.com.br/6-tigelas-bowl-1100ml-preto-resistente-hotel-restaurante/up/MLBU3682249905?pdp_filters=item_id:MLB6074578346&matt_tool=92013967&matt_internal_campaign_id=&matt_word=&matt_source=google&matt_campaign_id=22603531565&matt_ad_group_id=184689824807&matt_match_type=&matt_network=g&matt_device=c&matt_creative=758138322203&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=609368795&matt_product_id=MLB6074578346&matt_product_partition_id=2425720730334&matt_target_id=aud-1966873223882:pla-2425720730334&cq_src=google_ads&cq_cmp=22603531565&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22603531565&gbraid=0AAAAAD93qcChj94M1IqHKR164Brl0M-cG&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUEg9O5QGCVOxXHFSBKDYZduYa3YSkzn_s6fPIIaDU8Yn2_WMYGMLehoCrP4QAvD_BwE",
     "preco": 65
   },
