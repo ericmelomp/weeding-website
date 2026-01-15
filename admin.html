@@ -437,7 +437,7 @@
             }
         }
 
-        // Salva dados no localStorage
+        // Salva dados no localStorage e faz download do JSON
         function saveData() {
             try {
                 // Validação básica
@@ -447,8 +447,22 @@
                     return;
                 }
 
+                // Salva no localStorage
                 localStorage.setItem('presentesAdminData', JSON.stringify(presentesData, null, 2));
-                showMessage('Alterações salvas com sucesso!', 'success');
+                
+                // Faz download automático do JSON
+                const dataStr = JSON.stringify(presentesData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'presentes-data.json';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                showMessage('Alterações salvas! JSON baixado automaticamente.', 'success');
             } catch (error) {
                 console.error('Erro ao salvar:', error);
                 showMessage('Erro ao salvar. Verifique o console.', 'error');

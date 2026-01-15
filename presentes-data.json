@@ -132,7 +132,7 @@
     "id": "presente-1768422044150",
     "tipo": "normal",
     "titulo": "Jogo de Toalhas",
-    "imagem": "",
+    "imagem": "assets/jogo_toalhas.png",
     "link": "https://www.mercadolivre.com.br/kit-jogo-toalha-rosto-e-banho-4-pcs-contendo-2-rosto-2-banho-cor-azul-petroleo-liso/p/MLB53456256?pdp_filters=item_id:MLB4289773401&matt_tool=97252265&matt_internal_campaign_id=353552523&matt_word=&matt_source=google&matt_campaign_id=23048606139&matt_ad_group_id=191505175390&matt_match_type=&matt_network=g&matt_device=c&matt_creative=781162847981&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=5704251821&matt_product_id=MLB4289773401&matt_product_partition_id=2448248556418&matt_target_id=aud-1966489759667:pla-2448248556418&cq_src=google_ads&cq_cmp=23048606139&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=23048606139&gbraid=0AAAAAD93qcAVFoGyuHZmyXpn0rlakwgkL&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUIoHgmLCSA7RCqmHBcbRclEGIVi65X1Jcs4sFedJ-y8Cz0jQzEX3bhoCyjMQAvD_BwE",
     "preco": 75
   },
@@ -140,7 +140,7 @@
     "id": "presente-1768422114162",
     "tipo": "normal",
     "titulo": "Medidor Culinário",
-    "imagem": "",
+    "imagem": "assets/medidor.png",
     "link": "https://www.amazon.com.br/Medidor-Culin%C3%A1rio-Colher-X%C3%ADcara-Cozinha/dp/B0DVHRKKQB/ref=asc_df_B0DVHRKKQB?mcid=dd5ca3a997f93953af0474a573a3e388&tag=googleshopp00-20&linkCode=df0&hvadid=709876289439&hvpos=&hvnetw=g&hvrand=4409555654144263936&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2404045236196&psc=1&language=pt_BR&gad_source=1",
     "preco": 40
   },
@@ -148,7 +148,7 @@
     "id": "presente-1768422257943",
     "tipo": "normal",
     "titulo": "Sanduicheira",
-    "imagem": "",
+    "imagem": "assets/sanduicheira.png",
     "link": "https://www.amazon.com.br/Sanduicheira-El%C3%A9trica-Cadence-Click-220V/dp/B0CDJ5DQ7M/ref=asc_df_B0CDJ5DQ7M?mcid=0b8a0f8c5d883de18ff25849c88809cc&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=18193241657291015034&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2205066717738&psc=1&language=pt_BR&gad_source=1",
     "preco": 100
   },
@@ -156,7 +156,7 @@
     "id": "presente-1768422318791",
     "tipo": "normal",
     "titulo": "Chaleira Elétrica",
-    "imagem": "",
+    "imagem": "assets/chaleira.png",
     "link": "https://www.amazon.com.br/Chaleira-El%C3%A9trica-Lumini-Cadence-Branca/dp/B09NCGP6YZ/ref=asc_df_B09NCGP6YZ?mcid=8da089f0cfaa3d6e9c10a64b42435ad3&tag=googleshopp00-20&linkCode=df0&hvadid=709964506256&hvpos=&hvnetw=g&hvrand=6888871003601144833&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1622072336073&language=pt_BR&gad_source=1&th=1",
     "preco": 110
   },
@@ -164,7 +164,7 @@
     "id": "presente-1768422353520",
     "tipo": "normal",
     "titulo": "Kit Panelas (10 pçs)",
-    "imagem": "",
+    "imagem": "assets/panelas_10pcs.png",
     "link": "https://www.amazon.com.br/Panelas-Tramontina-Antiaderente-Turim-Vermelho/dp/B0BBS9KDHT/ref=asc_df_B0BBS9KDHT?mcid=e625a371412d3ee49e922f6df81a7438&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=2659095343042136134&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1747827860105&psc=1&language=pt_BR&gad_source=1",
     "preco": 350
   },
@@ -172,7 +172,7 @@
     "id": "presente-1768422584316",
     "tipo": "normal",
     "titulo": "Kit Panelas (5 pçs)",
-    "imagem": "",
+    "imagem": "assets/panelas_5pcs.png",
     "link": "https://www.amazon.com.br/Panelas-Antiaderente-Alum%C3%ADnio-Premium-Esp%C3%A1tula/dp/B0DFMZ92ZW/ref=asc_df_B0DFMZ92ZW?mcid=acc1da9bda433f519d2d7c2e8b3f2d9f&tag=googleshopp00-20&linkCode=df0&hvadid=709989056369&hvpos=&hvnetw=g&hvrand=11821897928313665384&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2369508249064&language=pt_BR&gad_source=1&th=1",
     "preco": 150
   },
@@ -180,7 +180,7 @@
     "id": "presente-1768422596814",
     "tipo": "normal",
     "titulo": "Aspirador de Pó",
-    "imagem": "",
+    "imagem": "assets/aspirador_de_po.png",
     "link": "https://www.amazon.com.br/Aspirador-Vertical-1300W-STK14-220V/dp/B094XCF5RZ/ref=asc_df_B094XCF5RZ?mcid=92c091db876e339ba291f3166a844e20&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=7848323978517004261&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1388115964777&language=pt_BR&gad_source=1&th=1",
     "preco": 160
   },
@@ -188,7 +188,7 @@
     "id": "presente-1768422668041",
     "tipo": "normal",
     "titulo": "Air Fryer",
-    "imagem": "",
+    "imagem": "assets/airfryer.png",
     "link": "https://www.amazon.com.br/Fritadeira-%C3%93leo-Oster-1500W-OFRT970/dp/B0BSNW9X1Z/ref=asc_df_B0BSNW9X1Z?mcid=dc8c76c066e539308ed539f5730e4e70&tag=googleshopp00-20&linkCode=df0&hvadid=709886750320&hvpos=&hvnetw=g&hvrand=6115749896992822940&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2246055013119&psc=1&language=pt_BR&gad_source=1",
     "preco": 330
   },
@@ -196,7 +196,7 @@
     "id": "presente-1768422727597",
     "tipo": "normal",
     "titulo": "Mixer",
-    "imagem": "",
+    "imagem": "assets/mixer.png",
     "link": "https://www.amazon.com.br/Electrolux-4011AHBR407-Mixer-EIB10/dp/B09B2M8N4T/ref=asc_df_B09B2M8N4T?mcid=25dceb4e72ac342a988f7ad76d8c2994&tag=googleshopp00-20&linkCode=df0&hvadid=709874962041&hvpos=&hvnetw=g&hvrand=16584830333288390240&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1416833357664&psc=1&language=pt_BR&gad_source=1",
     "preco": 190
   },
