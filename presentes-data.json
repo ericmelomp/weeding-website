@@ -177,14 +177,6 @@
     "preco": 150
   },
   {
-    "id": "presente-1768422596814",
-    "tipo": "normal",
-    "titulo": "Aspirador de Pó",
-    "imagem": "assets/aspirador_de_.png",
-    "link": "https://www.amazon.com.br/Aspirador-Vertical-1300W-STK14-220V/dp/B094XCF5RZ/ref=asc_df_B094XCF5RZ?mcid=92c091db876e339ba291f3166a844e20&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=7848323978517004261&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1388115964777&language=pt_BR&gad_source=1&th=1",
-    "preco": 160
-  },
-  {
     "id": "presente-1768422668041",
     "tipo": "normal",
     "titulo": "Air Fryer",
@@ -239,5 +231,13 @@
     "imagem": "",
     "link": "https://www.amazon.com.br/Ventilador-Arno-VE71-Velocidades-Silencioso/dp/B0F8XYY2PL/ref=asc_df_B0F8XYY2PL?mcid=e2fb7bd73e2d30c1bb3114f7331d5e72&tag=googleshopp00-20&linkCode=df0&hvadid=710048990096&hvpos=&hvnetw=g&hvrand=464939668376337531&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2435787558942&language=pt_BR&gad_source=1&th=1",
     "preco": 250
+  },
+  {
+    "id": "presente-1768524337428",
+    "tipo": "normal",
+    "titulo": "Aspirador de Pó",
+    "imagem": "assets/aspirador_de_po.png",
+    "link": "https://www.amazon.com.br/Aspirador-Vertical-1300W-STK14-220V/dp/B094XCF5RZ/ref=asc_df_B094XCF5RZ?mcid=92c091db876e339ba291f3166a844e20&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=7848323978517004261&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1388115964777&language=pt_BR&gad_source=1&th=1",
+    "preco": 160
   }
 ]
