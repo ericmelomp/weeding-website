@@ -196,7 +196,7 @@
     "id": "presente-1768422767687",
     "tipo": "normal",
     "titulo": "Micro-ondas",
-    "imagem": "",
+    "imagem": "assets/microondas.png",
     "link": "https://www.amazon.com.br/Micro-Ondas-Electrolux-Prata-Painel-Integrado/dp/B076XCSJ4Q/ref=asc_df_B076XCSJ4Q?mcid=a23f81dc68a535a9b1ff15205d05db4f&tag=googleshopp00-20&linkCode=df0&hvadid=709864975911&hvpos=&hvnetw=g&hvrand=15317074800854869651&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-875186652437&language=pt_BR&gad_source=1&th=1",
     "preco": 800
   },
@@ -212,7 +212,7 @@
     "id": "presente-1768422912144",
     "tipo": "normal",
     "titulo": "Purificador de Água",
-    "imagem": "",
+    "imagem": "assets/purificador_agua.png",
     "link": "https://www.amazon.com.br/Purificador-Consul-Eletr%C3%B4nico-Refrigera%C3%A7%C3%A3o-CPB33AF/dp/B09SQB95LJ/ref=asc_df_B09SQB95LJ?mcid=9f59027e635a35bdaf0e960e7efac2dd&tag=googleshopp00-20&linkCode=df0&hvadid=709870389015&hvpos=&hvnetw=g&hvrand=9903725803242412776&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1639004998263&psc=1&language=pt_BR&gad_source=1",
     "preco": 800
   },
@@ -220,15 +220,15 @@
     "id": "presente-1768423024380",
     "tipo": "normal",
     "titulo": "Alexa",
-    "imagem": "",
-    "link": "https://www.kabum.com.br/produto/460471/echo-dot-5-geracao-amazon-com-alexa-smart-speaker-preto-b09b8vgcr8?gclsrc=aw.ds&&utm_id=22429584361&gad_source=1&gad_campaignid=22429584361&gbraid=0AAAAADx-HyEWrWtGXaSni0uKgAKKlXAJC&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUO5VCItmDNo_svl7PDlDJGthP-LGrGiLcGKxL5OuUNrYWZss4_EfzxoCcSAQAvD_BwE",
+    "imagem": "assets/alexa.png",
+    "link": "https://www.kabum.com.br/produto/460473/echo-dot-5-geracao-amazon-com-alexa-smart-speaker-azul-b09b8qfyz2?gclsrc=aw.ds&&utm_id=22429584361&gad_source=1&gad_campaignid=22429584361&gbraid=0AAAAADx-HyHw8pYxPyK7XaxCzVkGE-a3S&gclid=EAIaIQobChMIwajM--yOkgMVLmpIAB2_EwkkEAQYAiABEgIbh_D_BwE",
     "preco": 400
   },
   {
     "id": "presente-1768423031668",
     "tipo": "normal",
     "titulo": "Ventilador de Mesa",
-    "imagem": "",
+    "imagem": "assets/ventilador_mesa.png",
     "link": "https://www.amazon.com.br/Ventilador-Arno-VE71-Velocidades-Silencioso/dp/B0F8XYY2PL/ref=asc_df_B0F8XYY2PL?mcid=e2fb7bd73e2d30c1bb3114f7331d5e72&tag=googleshopp00-20&linkCode=df0&hvadid=710048990096&hvpos=&hvnetw=g&hvrand=464939668376337531&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-2435787558942&language=pt_BR&gad_source=1&th=1",
     "preco": 250
   },
