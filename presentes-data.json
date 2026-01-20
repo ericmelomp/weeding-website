@@ -271,7 +271,7 @@
     "id": "presente-1768869195705",
     "tipo": "pix",
     "titulo": "",
-    "imagem": "assets\\fun\\acrescimo_de_30%_de_chance_de_pegar_o_buque.png",
+    "imagem": "assets\\fun\\acrescimo_de_30_de_chance_de_pegar_o_buque.png",
     "link": "",
     "mensagem": "Acréscimo de 30% de chance de pegar o buquê",
     "preco": 384
@@ -280,7 +280,7 @@
     "id": "presente-1768869266476",
     "tipo": "pix",
     "titulo": "",
-    "imagem": "assets\\fun\\acréscimo_de_50%_de_chance_de_pegar_o_buque.png",
+    "imagem": "assets\\fun\\acréscimo_de_50_de_chance_de_pegar_o_buque.png",
     "link": "",
     "mensagem": "Acréscimo de 50% de chance de pegar o buquê",
     "preco": 471
@@ -289,7 +289,7 @@
     "id": "presente-1768869286341",
     "tipo": "pix",
     "titulo": "",
-    "imagem": "assets\\fun\\taxa_tio_do_pave_pra_ele_ficar_só_no_pave.png",
+    "imagem": "assets\\fun\\taxa_tio_do_pave_pra_ele_ficar_so_no_pave.png",
     "link": "",
     "mensagem": "Taxa 'tio do pavê' (pra ele ficar só no pavê)",
     "preco": 156
