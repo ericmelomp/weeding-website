@@ -239,5 +239,222 @@
     "imagem": "assets/aspirador_po.png",
     "link": "https://www.amazon.com.br/Aspirador-Vertical-1300W-STK14-220V/dp/B094XCF5RZ/ref=asc_df_B094XCF5RZ?mcid=92c091db876e339ba291f3166a844e20&tag=googleshopp00-20&linkCode=df0&hvadid=709968341038&hvpos=&hvnetw=g&hvrand=7848323978517004261&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9196892&hvtargid=pla-1388115964777&language=pt_BR&gad_source=1&th=1",
     "preco": 160
+  },
+  {
+    "id": "presente-1768869014449",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "preco": 333,
+    "mensagem": "Massagem relaxante para o noivo depois de ver a conta do casamento"
+  },
+  {
+    "id": "presente-1768869095253",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Acessório para cortar a unha do dedão do noivo",
+    "preco": 236
+  },
+  {
+    "id": "presente-1768869163026",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Aulas de culinária para o noivo (pra não viver de miojo)",
+    "preco": 150
+  },
+  {
+    "id": "presente-1768869195705",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Acréscimo de 30% de chance de pegar o buquê",
+    "preco": 384
+  },
+  {
+    "id": "presente-1768869266476",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Acréscimo de 50% de chance de pegar o buquê",
+    "preco": 471
+  },
+  {
+    "id": "presente-1768869286341",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Taxa 'tio do pavê' (pra ele ficar só no pavê)",
+    "preco": 156
+  },
+  {
+    "id": "presente-1768869324362",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Taxa 'sem pedir pra cantar' (para tímidos)",
+    "preco": 249
+  },
+  {
+    "id": "presente-1768869376286",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Taxa bem-casado extra (porque sempre some)",
+    "preco": 312
+  },
+  {
+    "id": "presente-1768869395189",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Balança para os noivos não engordarem depois do casamento",
+    "preco": 80
+  },
+  {
+    "id": "presente-1768869582064",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Só pra não dizer que não dei nada",
+    "preco": 20
+  },
+  {
+    "id": "presente-1768869640870",
+    "tipo": "pix",
+    "titulo": "Despertador para a noiva",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Dorme feito pedra",
+    "preco": 135
+  },
+  {
+    "id": "presente-1768869663417",
+    "tipo": "pix",
+    "titulo": "Rolo de macarrão da noiva.",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Para quando o noivo aprontar",
+    "preco": 150
+  },
+  {
+    "id": "presente-1768869703463",
+    "tipo": "pix",
+    "titulo": "Capacete contra rolo de macarrão",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Para o noivo se proteger quando necessário",
+    "preco": 150
+  },
+  {
+    "id": "presente-1768869755909",
+    "tipo": "pix",
+    "titulo": "Dia do noivo",
+    "imagem": "",
+    "link": "",
+    "preco": 200,
+    "mensagem": "Para ficar bem lindo e cheiroso"
+  },
+  {
+    "id": "presente-1768869847628",
+    "tipo": "pix",
+    "titulo": "Kit churrasco de patrão",
+    "imagem": "",
+    "link": "",
+    "mensagem": "O noivo garante que você será convidado!",
+    "preco": 350
+  },
+  {
+    "id": "presente-1768869890130",
+    "tipo": "pix",
+    "titulo": "Ajude a pagar o cartão",
+    "imagem": "",
+    "link": "",
+    "preco": 500,
+    "mensagem": "Sério, dá até medo da fatura"
+  },
+  {
+    "id": "presente-1768869934213",
+    "tipo": "pix",
+    "titulo": "O inesperado",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Se por alguma intervenção divina...",
+    "preco": 5000
+  },
+  {
+    "id": "presente-1768869961974",
+    "tipo": "pix",
+    "titulo": "Iluminação",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Uma luz se abre para nossa lua de mel",
+    "preco": 1000
+  },
+  {
+    "id": "presente-1768869995624",
+    "tipo": "pix",
+    "titulo": "Relógio",
+    "imagem": "",
+    "link": "",
+    "pixCode": "",
+    "mensagem": "Para não perder a hora do home office",
+    "preco": 100
+  },
+  {
+    "id": "presente-1768870169624",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Toma aqui uns 50 reais",
+    "preco": 50
+  },
+  {
+    "id": "presente-1768870273459",
+    "tipo": "pix",
+    "titulo": "Paracetaloka",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Kit calmante para a noiva não se estressar com o noivo",
+    "preco": 70
+  },
+  {
+    "id": "presente-1768870343263",
+    "tipo": "pix",
+    "titulo": "Cobertor",
+    "imagem": "",
+    "link": "",
+    "mensagem": "Para a noiva estar sempre coberta de razão",
+    "preco": 120
+  },
+  {
+    "id": "presente-1768870405142",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "preco": 120,
+    "mensagem": "Primeiro lugar na fila do buffet"
+  },
+  {
+    "id": "presente-1768870458169",
+    "tipo": "pix",
+    "titulo": "",
+    "imagem": "",
+    "link": "",
+    "mensagem": "1 ano de corte de cabelo pro noivo",
+    "preco": 960
   }
 ]
