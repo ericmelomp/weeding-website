@@ -251,13 +251,13 @@
                     ${imageHTML}
                 </div>
                 <div class="presente-content">
-                    <h3 class="presente-title">${presente.titulo || 'Presente'}</h3>
+                    ${presente.titulo ? `<h3 class="presente-title">${presente.titulo}</h3>` : ''}
             `;
             
             if (isPix) {
                 contentHTML += `
                     <p class="pix-message" style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-light); margin-bottom: var(--spacing-md); line-height: 1.6;">
-                        ${presente.mensagem || 'Se preferir, você também pode contribuir com qualquer valor via PIX. Será uma ajuda muito especial para começarmos nossa vida a dois!'} <span style="color: #E91E63;">❤️</span>
+                        ${presente.mensagem || 'Se preferir, você também pode contribuir com qualquer valor via PIX. Será uma ajuda muito especial para começarmos nossa vida a dois!'}
                     </p>
                     <button class="btn btn-primary btn-small" onclick="copyPixCode()">
                         Copiar código PIX
